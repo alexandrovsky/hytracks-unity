@@ -431,7 +431,9 @@ namespace TouchScript.InputSources
             Debug.Log(sender);
             Debug.Log(e);
             var entity = e.Blob;
-            lock (this)
+            Debug.Log($"OnBlobUpdated ID: {entity.Id} x: {entity.X} y: {entity.Y} a: {entity.Angle}");
+
+            lock(this)
             {
                 ObjectPointer touch;
                 if (!blobToInternalId.TryGetValue(entity, out touch)) return;
@@ -447,7 +449,7 @@ namespace TouchScript.InputSources
 
         private void OnBlobRemoved(object sender, TuioBlobEventArgs e)
         {
-            var entity = e.Blob;
+            var entity = e.Blob;            
             lock (this)
             {
                 ObjectPointer touch;
@@ -462,7 +464,7 @@ namespace TouchScript.InputSources
         private void OnObjectAdded(object sender, TuioObjectEventArgs e)
         {
             var entity = e.Object;
-            Debug.Log($"OnObjectAdded {entity.Id}, {entity.X} {entity.Y} {entity.Angle}");
+            Debug.Log($"OnObjectAdded ID: {entity.Id} x: {entity.X} y: {entity.Y} a: {entity.Angle}");
             lock (this)
             {
                 var x = entity.X * screenWidth;
