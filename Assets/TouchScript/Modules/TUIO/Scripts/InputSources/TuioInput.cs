@@ -462,6 +462,7 @@ namespace TouchScript.InputSources
         private void OnObjectAdded(object sender, TuioObjectEventArgs e)
         {
             var entity = e.Object;
+            Debug.Log($"OnObjectAdded {entity.Id}, {entity.X} {entity.Y} {entity.Angle}");
             lock (this)
             {
                 var x = entity.X * screenWidth;
@@ -475,6 +476,7 @@ namespace TouchScript.InputSources
         private void OnObjectUpdated(object sender, TuioObjectEventArgs e)
         {
             var entity = e.Object;
+            Debug.Log($"OnObjectUpdated {entity.Id}, {entity.X} {entity.Y} {entity.Angle}");
             lock (this)
             {
                 ObjectPointer touch;
