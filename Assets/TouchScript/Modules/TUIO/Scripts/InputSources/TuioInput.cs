@@ -316,7 +316,7 @@ namespace TouchScript.InputSources
             if (server != null) disconnect();
 
             server = new TuioServer(TuioPort);
-            server.Connect();
+            server.Connect();            
             updateInputs();
         }
 
