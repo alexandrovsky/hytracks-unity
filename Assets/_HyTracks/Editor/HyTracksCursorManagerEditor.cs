@@ -50,11 +50,8 @@ namespace HyTracks.Editor {
 
             var display = GUIElements.Header(TEXT_CURSORS_HEADER,cursorsProps);
             if(display) {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.TextField("ID");
+                EditorGUI.indentLevel++;                
                 EditorGUILayout.PropertyField(mousePointerProxy,new GUIContent("Mouse Pointer Proxy"));
-                EditorGUILayout.EndHorizontal();
                 EditorGUILayout.PropertyField(touchPointerProxy,new GUIContent("Touch Pointer Proxy"));
                 EditorGUILayout.PropertyField(penPointerProxy,new GUIContent("Pen Pointer Proxy"));
                 EditorGUILayout.PropertyField(objectPointerProxy,new GUIContent("Object Pointer Proxy"));

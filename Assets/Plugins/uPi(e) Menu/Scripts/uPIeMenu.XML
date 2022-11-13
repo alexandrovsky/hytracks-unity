@@ -72,6 +72,11 @@
                 This means this is what is selected, when the controllers analogue stick is centered
             </summary>
         </member>
+        <member name="P:uPIe.uPIeMenu.AxisInputName">
+            <summary>
+                If unitys new input system is selected this is what the name of the InputAction is
+            </summary>
+        </member>
         <member name="P:uPIe.uPIeMenu.HorizontalInputName">
             <summary>
                 If unity default input is selected (no custom input) this is what the horizontal input
@@ -136,9 +141,20 @@
         <member name="P:uPIe.uPIeMenu.UseCustomInputSystem">
             <summary>
                 Gets or sets a value indicating whether to use a custom input system or the unity default one.
+                NOTE: unitys new InpytSystem is also regarded as custom
             </summary>
             <value>
                 <c>true</c> if custom input system should be used; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:uPIe.uPIeMenu.UseInputSystem">
+            <summary>
+                Gets or sets a value to define which input system to use.
+            </summary>
+            <value>
+                <c>0</c> use unity InputManager (legacy input)
+                <c>1</c> use unitys new InputSystem
+                <c>2</c> use a custom/selfmade input system
             </value>
         </member>
         <member name="P:uPIe.uPIeMenu.CustomInput">
@@ -256,7 +272,7 @@
         </member>
         <member name="M:uPIe.uPIeMenu.PollInput">
             <summary>
-                Polls the input.
+                Polls unity legacy input.
             </summary>
         </member>
         <member name="M:uPIe.uPIeMenu.GetIndicatorPosition(UnityEngine.Vector2@)">

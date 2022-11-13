@@ -38,7 +38,7 @@ namespace HyTracks {
 		/// <summary>
 		/// Prefab to use as object cursors template.
 		/// </summary>
-		public PointerCursor ObjectCursor {
+		public ObjectCursor ObjectCursor {
 			get { return objectCursor; }
 			set { objectCursor = value; }
 		}
@@ -95,7 +95,12 @@ namespace HyTracks {
 		private PointerCursor penCursor;
 
 		[SerializeField]
-		private PointerCursor objectCursor;
+		private ObjectCursor objectCursor;
+
+
+		[SerializeField]
+		private HyTracksObjectCursorModel modelObjectCursor;
+
 
 		[SerializeField]
 		[ToggleLeft]
@@ -111,7 +116,9 @@ namespace HyTracks {
 		private ObjectPool<PointerCursor> mousePool;
 		private ObjectPool<PointerCursor> touchPool;
 		private ObjectPool<PointerCursor> penPool;
-		private ObjectPool<PointerCursor> objectPool;
+		private ObjectPool<ObjectCursor> objectPool;
+		private ObjectPool<HyTracksObjectCursorModel> modelObjectPool;
+
 		private Dictionary<int,PointerCursor> cursors = new Dictionary<int,PointerCursor>(10);
 
 		private CustomSampler cursorSampler;
@@ -129,7 +136,7 @@ namespace HyTracks {
 			mousePool = new ObjectPool<PointerCursor>(2,instantiateMouseProxy,null,clearProxy);
 			touchPool = new ObjectPool<PointerCursor>(10,instantiateTouchProxy,null,clearProxy);
 			penPool = new ObjectPool<PointerCursor>(2,instantiatePenProxy,null,clearProxy);
-			objectPool = new ObjectPool<PointerCursor>(2,instantiateObjectProxy,null,clearProxy);
+			objectPool = new ObjectPool<ObjectCursor>(2,instantiateObjectProxy,null,clearProxy);
 
 			updateCursorSize();
 
@@ -185,7 +192,7 @@ namespace HyTracks {
 			return Instantiate(penCursor);
 		}
 
-		private PointerCursor instantiateObjectProxy()
+		private ObjectCursor instantiateObjectProxy()
 		{
 			return Instantiate(objectCursor);
 		}

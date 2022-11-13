@@ -49,10 +49,13 @@ public class InputSwitcher : MonoBehaviour
 
     private void Update()
     {
+#if ENABLE_INPUT_SYSTEM
+#else
         if (Input.GetKeyDown(SwitchKey))
         {
             SwitchInputDevice();
         }
+#endif
     }
 
     public void SwitchInputDevice()
