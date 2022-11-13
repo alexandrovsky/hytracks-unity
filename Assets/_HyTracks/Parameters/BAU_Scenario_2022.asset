@@ -12,33 +12,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0cf4bacd4594e7185ac9de9b5547dc, type: 3}
   m_Name: BAU_Scenario_2022
   m_EditorClassIdentifier: 
-  parametersSocialInputJSON: {fileID: 0}
-  parametersTechnologyInputJSON: {fileID: 0}
-  parametersEconomicsInputJSON: {fileID: 0}
-  parametersEnvironmentInputJSON: {fileID: 0}
-  parametersPoliticsInputJSON: {fileID: 0}
+  parametersSocialInputJSON: {fileID: 4900000, guid: 527d1ceb953c54dc4a69c4074f2c389c, type: 3}
+  parametersTechnologyInputJSON: {fileID: 4900000, guid: dd05faebab911453dad2f2881f82c899, type: 3}
+  parametersEconomicsInputJSON: {fileID: 4900000, guid: f185692c3369c439989e0addf851c720, type: 3}
+  parametersEnvironmentInputJSON: {fileID: 4900000, guid: bd1b2993b7c3f4ca0b2d422b675a4f35, type: 3}
+  parametersPoliticsInputJSON: {fileID: 4900000, guid: 93efbdcbe014e44029eafffec260ab6b, type: 3}
   parametersSocialOutputJSON: {fileID: 0}
   parametersTechnologyOutputJSON: {fileID: 0}
   parametersEconomicsOutputJSON: {fileID: 0}
   parametersEnvironmentOutputJSON: {fileID: 0}
   parametersPoliticsOutputJSON: {fileID: 0}
   parametersSocialInput:
-    parameters: []
+    parameters:
+    - name: 
+      unit: 
+      description: 
+      value: 0
   parametersSocialOutput:
     parameters: []
   parametersTechnologyInput:
-    parameters: []
+    parameters:
+    - name: sells O&M for AMB
+      unit: 
+      description: 
+      value: 0
+    - name: sells power to AMB
+      unit: 
+      description: 
+      value: 0
+    - name: sells gas to AMB
+      unit: 
+      description: 
+      value: 0
+    - name: ETS price in Euro
+      unit: 
+      description: 
+      value: 0
+    - name: Coal price in Euro
+      unit: 
+      description: Commodity price
+      value: 320
+    - name: Natural gas price
+      unit: 
+      description: 
+      value: 170
   parametersTechnologyOutput:
     parameters: []
   parametersEconomicsInput:
-    parameters: []
+    parameters:
+    - name: sells O&M for AMB
+      unit: 
+      description: 
+      value: 0
+    - name: sells power to AMB
+      unit: 
+      description: 
+      value: 0
+    - name: sells gas to AMB
+      unit: 
+      description: 
+      value: 0
+    - name: ETS price in Euro
+      unit: 
+      description: 
+      value: 0
+    - name: Coal price in Euro
+      unit: 
+      description: Commodity price
+      value: 320
+    - name: Natural gas price
+      unit: 
+      description: 
+      value: 170
   parametersEconomicsOutput:
     parameters: []
   parametersEnvironmentInput:
-    parameters: []
+    parameters:
+    - name: 
+      unit: 
+      description: 
+      value: 0
   parametersEnvironmentOutput:
     parameters: []
   parametersPoliticsInput:
-    parameters: []
+    parameters:
+    - name: Regulatory measures
+      unit: 
+      description: Import ban on coal from August 2022
+      value: 0
+    - name: Allowances
+      unit: 
+      description: 
+      value: 0
   parametersPoliticsOutput:
     parameters: []
