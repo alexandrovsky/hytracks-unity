@@ -3,7 +3,7 @@
  */
 
 #if TOUCHSCRIPT_TUIO
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
+//#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
 using System;
 using System.Collections.Generic;
 using TouchScript.Pointers;
@@ -512,4 +512,4 @@ namespace TouchScript.InputSources
 }
 
 #endif
-#endif
+//#endif

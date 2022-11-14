@@ -8,6 +8,7 @@ namespace HyTracks
     [CreateAssetMenu(menuName = "HyTracks/SteepParameters")]
     public class HyTracksSteepParameters:ScriptableObject {
         public DateTime date;
+        public string title = "Bau Scenario 2022";
 
         [Header("Input Parameters Text Files")]
         public TextAsset parametersSocialInputJSON;
