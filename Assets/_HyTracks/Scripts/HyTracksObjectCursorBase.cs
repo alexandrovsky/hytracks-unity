@@ -30,8 +30,7 @@ namespace HyTracks {
 		}
 
 
-		private void Start()
-		{
+		void InitUI() {
 			foreach(STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
 				HyTracksParametersList paramList = GetInputParameters(dim);
 				foreach(HyTracksParametersBase p in paramList.parameters) {
@@ -53,13 +52,22 @@ namespace HyTracks {
 						uiParent = uiInputPolitics;
 						break;
 					}
-					if (uiParent == null) {
+					if(uiParent == null) {
 						break;
 					}
 
 					GameObject newUI = Instantiate(parametersPefabUI,uiParent);
+					HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
+					ui.Init(p);
+					LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
 				}
 			}
+			
+		}
+
+		private void Start()
+		{
+			InitUI();
 		}
 
 	}
