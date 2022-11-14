@@ -1,0 +1,28 @@
+{        
+    "parameters" : [
+        {
+            "name": "Power",
+            "units": "MW",
+            "description": "",
+            "value": 444.50
+        },
+        {
+            "name": "Efficiency",
+            "units": "T",
+            "description": "",
+            "value": 0.58
+        },
+        {
+            "name": "Carbon Emission",
+            "units": "T",
+            "description": "",
+            "value": 457000
+        },
+        {
+            "name": "Revenue",
+            "units": "1000 EUR",
+            "description": "",
+            "value": 80769
+        }
+    ]
+}
