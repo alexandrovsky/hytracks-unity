@@ -1,0 +1,16 @@
+{
+    "parameters": [
+        {
+            "name": "Operating time",
+            "units": "H",
+            "description": "",
+            "value": 3408
+        },
+        {
+            "name": "Share of free allowances",
+            "units": "Count",
+            "description": "",
+            "value": 0
+        }
+    ]
+}

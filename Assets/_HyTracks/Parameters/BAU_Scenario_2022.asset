@@ -17,11 +17,11 @@ MonoBehaviour:
   parametersEconomicsInputJSON: {fileID: 4900000, guid: f185692c3369c439989e0addf851c720, type: 3}
   parametersEnvironmentInputJSON: {fileID: 4900000, guid: bd1b2993b7c3f4ca0b2d422b675a4f35, type: 3}
   parametersPoliticsInputJSON: {fileID: 4900000, guid: 93efbdcbe014e44029eafffec260ab6b, type: 3}
-  parametersSocialOutputJSON: {fileID: 0}
-  parametersTechnologyOutputJSON: {fileID: 0}
-  parametersEconomicsOutputJSON: {fileID: 0}
-  parametersEnvironmentOutputJSON: {fileID: 0}
-  parametersPoliticsOutputJSON: {fileID: 0}
+  parametersSocialOutputJSON: {fileID: 4900000, guid: 9621b90610bd5437aabbd570594172be, type: 3}
+  parametersTechnologyOutputJSON: {fileID: 4900000, guid: a9d11d2d135a8404a89a1cb592bebab4, type: 3}
+  parametersEconomicsOutputJSON: {fileID: 4900000, guid: d206c605c9e654061a122dc9bf1d79dd, type: 3}
+  parametersEnvironmentOutputJSON: {fileID: 4900000, guid: c7506cb65b2ba4409ac33f842e92bf93, type: 3}
+  parametersPoliticsOutputJSON: {fileID: 4900000, guid: a472ac5f4e02a49b38d03075929dc78b, type: 3}
   parametersSocialInput:
     parameters:
     - name: 

@@ -79,6 +79,7 @@ namespace HyTracks
         [EditorCools.Button]
         void LoadParametersFromFiles()
         {
+            // INPUTS
             if(parametersSocialInputJSON != null) {
                 parametersSocialInput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialInputJSON.text);
             }
@@ -93,6 +94,23 @@ namespace HyTracks
             }
             if(parametersPoliticsInputJSON != null) {
                 parametersPoliticsInput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsInputJSON.text);
+            }
+
+            // OUTPUTS
+            if(parametersSocialOutputJSON != null) {
+                parametersSocialOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialOutputJSON.text);
+            }
+            if(parametersTechnologyOutputJSON != null) {
+                parametersTechnologyOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersTechnologyOutputJSON.text);
+            }
+            if(parametersEconomicsOutputJSON != null) {
+                parametersEconomicsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEconomicsOutputJSON.text);
+            }
+            if(parametersEnvironmentOutputJSON != null) {
+                parametersEnvironmentOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEnvironmentOutputJSON.text);
+            }
+            if(parametersPoliticsOutputJSON != null) {
+                parametersPoliticsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsOutputJSON.text);
             }
         }
     }
