@@ -2,7 +2,7 @@
  * @author Valentin Simonov / http://va.lent.in/
  */
 
-#if TOUCHSCRIPT_TUIO
+//#if TOUCHSCRIPT_TUIO
 //#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_IOS || UNITY_ANDROID
 using System;
 using System.Collections.Generic;
@@ -511,5 +511,5 @@ namespace TouchScript.InputSources
     }
 }
 
-#endif
+//#endif
 //#endif
