@@ -34,32 +34,34 @@ namespace HyTracks {
 			foreach(STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
 				HyTracksParametersList paramList = GetInputParameters(dim);
 				foreach(HyTracksParametersBase p in paramList.parameters) {
-					RectTransform uiParent = null;
-					switch(dim) {
-					case STEEPDimension.SOCIAL:
-						uiParent = uiInputSocial;
-						break;
-					case STEEPDimension.TECHNOLOGY:
-						uiParent = uiInputTechnology;
-						break;
-					case STEEPDimension.ECONOMICS:
-						uiParent = uiInputTechnology;
-						break;
-					case STEEPDimension.ENVIRONMENT:
-						uiParent = uiInputEnvirontment;
-						break;
-					case STEEPDimension.POLITICS:
-						uiParent = uiInputPolitics;
-						break;
-					}
-					if(uiParent == null) {
-						break;
-					}
+					if(p.isVisible) {
+						RectTransform uiParent = null;
+						switch(dim) {
+						case STEEPDimension.SOCIAL:
+							uiParent = uiInputSocial;
+							break;
+						case STEEPDimension.TECHNOLOGY:
+							uiParent = uiInputTechnology;
+							break;
+						case STEEPDimension.ECONOMICS:
+							uiParent = uiInputTechnology;
+							break;
+						case STEEPDimension.ENVIRONMENT:
+							uiParent = uiInputEnvirontment;
+							break;
+						case STEEPDimension.POLITICS:
+							uiParent = uiInputPolitics;
+							break;
+						}
+						if(uiParent == null) {
+							break;
+						}
 
-					GameObject newUI = Instantiate(parametersPefabUI,uiParent);
-					HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
-					ui.Init(p);
-					LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
+						GameObject newUI = Instantiate(parametersPefabUI,uiParent);
+						HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
+						ui.Init(p);
+						LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
+					}					
 				}
 			}
 			

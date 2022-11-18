@@ -15,12 +15,14 @@ namespace HyTracks {
 
     [Serializable]
     public struct HyTracksParametersBase {
-
+        public string id;
         public string name;
         public string unit;
         [MultilineAttribute]
         public string description;
         public float value;
+        public bool isVisible;
+        public bool isEditable;
     }
 
 

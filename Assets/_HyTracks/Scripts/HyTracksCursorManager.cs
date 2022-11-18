@@ -7,6 +7,15 @@ using UnityEngine.Profiling;
 using TouchScript.Behaviors.Cursors;
 using TouchScript;
 namespace HyTracks {
+
+
+	[System.Serializable]
+	public class HyTracksCursorEntry<T> where T: HyTracksObjectCursorBase {
+		public string name;
+		public int tuioID;
+		public T cursor;
+	}
+
 	public class HyTracksCursorManager:MonoBehaviour {
 
 		#region Public properties
@@ -99,10 +108,14 @@ namespace HyTracks {
 
 
 		[SerializeField]
-		private HyTracksObjectCursorModel modelObjectCursor;
-
+		private List<HyTracksCursorEntry<HyTracksObjectCursorModel>> modelObjectCursors;
+		
 
 		[SerializeField]
+		private List<HyTracksCursorEntry<HyTracksObjectCursorAgent>> agentObjectCursors;
+		[SerializeField]
+
+
 		[ToggleLeft]
 		private bool useDPI = true;
 

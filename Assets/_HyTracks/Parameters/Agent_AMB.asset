@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0cf4bacd4594e7185ac9de9b5547dc, type: 3}
+  m_Name: Agent_AMB
+  m_EditorClassIdentifier: 
+  title: Bau Scenario 2022
+  parametersSocialInputJSON: {fileID: 0}
+  parametersTechnologyInputJSON: {fileID: 0}
+  parametersEconomicsInputJSON: {fileID: 0}
+  parametersEnvironmentInputJSON: {fileID: 0}
+  parametersPoliticsInputJSON: {fileID: 0}
+  parametersSocialOutputJSON: {fileID: 0}
+  parametersTechnologyOutputJSON: {fileID: 0}
+  parametersEconomicsOutputJSON: {fileID: 0}
+  parametersEnvironmentOutputJSON: {fileID: 0}
+  parametersPoliticsOutputJSON: {fileID: 0}
+  parametersSocialInput:
+    parameters: []
+  parametersSocialOutput:
+    parameters: []
+  parametersTechnologyInput:
+    parameters: []
+  parametersTechnologyOutput:
+    parameters: []
+  parametersEconomicsInput:
+    parameters: []
+  parametersEconomicsOutput:
+    parameters: []
+  parametersEnvironmentInput:
+    parameters: []
+  parametersEnvironmentOutput:
+    parameters: []
+  parametersPoliticsInput:
+    parameters: []
+  parametersPoliticsOutput:
+    parameters: []

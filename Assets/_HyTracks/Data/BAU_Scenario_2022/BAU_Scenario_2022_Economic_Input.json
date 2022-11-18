@@ -1,0 +1,52 @@
+{
+
+    "parameters": [
+        {
+            "id": "eco_0",
+            "name": "sells O&M for AMB",
+            "units": "",
+            "description": "",
+            "value": 0
+        },
+        {
+            "id": "eco_1",
+            "name": "sells power to AMB",
+            "units": "",
+            "description": "",
+            "value": 0
+        },
+        {
+            "id": "eco_2",
+            "name": "sells gas to AMB",
+            "units": "",
+            "description": "",
+            "value": 0
+        },
+        {
+            "id": "eco_3",
+            "name": "ETS price in Euro",
+            "units": "",
+            "description": "",
+            "value": 0
+        },
+        {
+            "id": "eco_4",
+            "name": "Coal price in Euro",
+            "units": "EUR/t",
+            "description": "Commodity price",
+            "value": 320,
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "eco_5",
+            "name": "Natural gas price",
+            "units": "EUR/MWh",
+            "description": "",
+            "value": 170,
+            "isVisible": true,
+            "isEditable": false
+        }
+    ]
+}
+

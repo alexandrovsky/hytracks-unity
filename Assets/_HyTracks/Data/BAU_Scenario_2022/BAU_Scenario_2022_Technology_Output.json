@@ -1,0 +1,32 @@
+{        
+    "parameters" : [
+        {
+            "id": "tec_0",
+            "name": "Power",
+            "units": "MW",
+            "description": "",
+            "value": 444.50
+        },
+        {
+            "id": "tec_1",
+            "name": "Efficiency",
+            "units": "T",
+            "description": "",
+            "value": 0.58
+        },
+        {
+            "id": "tec_2",
+            "name": "Carbon Emission",
+            "units": "T",
+            "description": "",
+            "value": 457000
+        },
+        {
+            "id": "tec_3",
+            "name": "Revenue",
+            "units": "1000 EUR",
+            "description": "",
+            "value": 80769
+        }
+    ]
+}

@@ -17,7 +17,11 @@ namespace HyTracks.Editor {
         public static readonly GUIContent TEXT_POINTER_SIZE = new GUIContent("Pointer size (cm)","Pointer size in cm based on current DPI.");
         public static readonly GUIContent TEXT_POINTER_PIXEL_SIZE = new GUIContent("Pointer size (px)","Pointer size in pixels.");
 
-        private SerializedProperty mousePointerProxy, touchPointerProxy, penPointerProxy, objectPointerProxy;
+        public static readonly GUIContent MODEL_OBJECT_CURSORS_HEADER = new GUIContent("Model Objects","Tangibles that represent the model assumptions.");
+        public static readonly GUIContent AGENT_OBJECT_CURSORS_HEADER = new GUIContent("Agent Objects","Tangibles that represent the agents.");
+
+
+        private SerializedProperty mousePointerProxy, touchPointerProxy, penPointerProxy, objectPointerProxy, modelObjectProxies, agentObjectProxies;
         private SerializedProperty useDPI, cursorSize, cursorPixelSize;
         private SerializedProperty cursorsProps;
 
@@ -31,6 +35,9 @@ namespace HyTracks.Editor {
             useDPI = serializedObject.FindProperty("useDPI");
             cursorSize = serializedObject.FindProperty("cursorSize");
             cursorPixelSize = serializedObject.FindProperty("cursorPixelSize");
+
+            modelObjectProxies = serializedObject.FindProperty("modelObjectCursors");
+            agentObjectProxies = serializedObject.FindProperty("agentObjectCursors");
 
             cursorsProps = serializedObject.FindProperty("cursorsProps");
         }
@@ -55,6 +62,20 @@ namespace HyTracks.Editor {
                 EditorGUILayout.PropertyField(touchPointerProxy,new GUIContent("Touch Pointer Proxy"));
                 EditorGUILayout.PropertyField(penPointerProxy,new GUIContent("Pen Pointer Proxy"));
                 EditorGUILayout.PropertyField(objectPointerProxy,new GUIContent("Object Pointer Proxy"));
+                EditorGUI.indentLevel--;
+            }
+
+            display = GUIElements.Header(MODEL_OBJECT_CURSORS_HEADER,cursorsProps);
+			if(display) {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(modelObjectProxies,new GUIContent("Model Objects Proxy"));                
+                EditorGUI.indentLevel--;
+            }
+
+            display = GUIElements.Header(AGENT_OBJECT_CURSORS_HEADER,cursorsProps);
+            if(display) {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(agentObjectProxies,new GUIContent("Agent Objects Proxy"));
                 EditorGUI.indentLevel--;
             }
 
