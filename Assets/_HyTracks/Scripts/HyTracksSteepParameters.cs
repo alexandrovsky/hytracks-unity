@@ -24,9 +24,22 @@ namespace HyTracks
         public TextAsset parametersEnvironmentOutputJSON;
         public TextAsset parametersPoliticsOutputJSON;
 
-        
 
-        [Header("SOCIAL")]
+		[Header("Input Connections Text Files")]
+		public TextAsset connectionsSocialInputJSON;
+		public TextAsset connectionsTechnologyInputJSON;
+		public TextAsset connectionsEconomicsInputJSON;
+		public TextAsset connectionsEnvironmentInputJSON;
+		public TextAsset connectionsPoliticsInputJSON;
+
+		[Header("Output Connections Text Files")]
+		public TextAsset connectionsSocialOutputJSON;
+		public TextAsset connectionsTechnologyOutputJSON;
+		public TextAsset connectionsEconomicsOutputJSON;
+		public TextAsset connectionsEnvironmentOutputJSON;
+		public TextAsset connectionsPoliticsOutputJSON;
+
+		[Header("SOCIAL")]
         [Space(10)]
         public HyTracksParametersList parametersSocialInput;
         public HyTracksParametersList parametersSocialOutput;

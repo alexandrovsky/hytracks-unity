@@ -13,33 +13,244 @@ MonoBehaviour:
   m_Name: Agent_AMB
   m_EditorClassIdentifier: 
   title: Bau Scenario 2022
-  parametersSocialInputJSON: {fileID: 0}
-  parametersTechnologyInputJSON: {fileID: 0}
-  parametersEconomicsInputJSON: {fileID: 0}
-  parametersEnvironmentInputJSON: {fileID: 0}
-  parametersPoliticsInputJSON: {fileID: 0}
-  parametersSocialOutputJSON: {fileID: 0}
-  parametersTechnologyOutputJSON: {fileID: 0}
-  parametersEconomicsOutputJSON: {fileID: 0}
-  parametersEnvironmentOutputJSON: {fileID: 0}
-  parametersPoliticsOutputJSON: {fileID: 0}
+  parametersSocialInputJSON: {fileID: 4900000, guid: 82553bda761514656b16f96d1279f70f, type: 3}
+  parametersTechnologyInputJSON: {fileID: 4900000, guid: bb7374272ce154f5580ee876c5d2f8fd, type: 3}
+  parametersEconomicsInputJSON: {fileID: 4900000, guid: bd7bfb888164244d3991a2d69334039d, type: 3}
+  parametersEnvironmentInputJSON: {fileID: 4900000, guid: 9eb12b7be40fa4f78a7c5f7a89b7b6c0, type: 3}
+  parametersPoliticsInputJSON: {fileID: 4900000, guid: c28a4bba5817f47c3a75f77dca0d285c, type: 3}
+  parametersSocialOutputJSON: {fileID: 4900000, guid: c60f4cd37332c4824bd1a94c89198d2e, type: 3}
+  parametersTechnologyOutputJSON: {fileID: 4900000, guid: d6faffe55d9e7438e9bebbf4ddb326e7, type: 3}
+  parametersEconomicsOutputJSON: {fileID: 4900000, guid: ece959204134942599f1bfedbcbf2b45, type: 3}
+  parametersEnvironmentOutputJSON: {fileID: 4900000, guid: 5a191e18961cd432e8beb6c2185eba9a, type: 3}
+  parametersPoliticsOutputJSON: {fileID: 4900000, guid: 73caa2a0cf41d48c0933180b126c7962, type: 3}
   parametersSocialInput:
-    parameters: []
+    parameters:
+    - id: 
+      name: 
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0
   parametersSocialOutput:
-    parameters: []
+    parameters:
+    - id: 
+      name: 
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0
   parametersTechnologyInput:
-    parameters: []
+    parameters:
+    - id: 
+      name: Power
+      unit: 
+      description: 
+      value: 444.5
+      isVisible: 1
+      isEditable: 0
+    - id: 
+      name: Efficiency
+      unit: 
+      description: 
+      value: 0.58
+      isVisible: 1
+      isEditable: 0
+    - id: 
+      name: Carbon emissions
+      unit: 
+      description: 
+      value: 457000
+      isVisible: 1
+      isEditable: 0
+    - id: 
+      name: Revenue
+      unit: 
+      description: 
+      value: 80769
+      isVisible: 1
+      isEditable: 0
   parametersTechnologyOutput:
-    parameters: []
+    parameters:
+    - id: 
+      name: Power
+      unit: 
+      description: 
+      value: 444.5
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Efficiency
+      unit: 
+      description: 
+      value: 0.58
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Carbon Emission
+      unit: 
+      description: 
+      value: 457000
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Revenue
+      unit: 
+      description: 
+      value: 80769
+      isVisible: 0
+      isEditable: 0
   parametersEconomicsInput:
-    parameters: []
+    parameters:
+    - id: 
+      name: cost
+      unit: 
+      description: raw material and other commodity
+      value: 45575
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: cost
+      unit: 
+      description: services
+      value: 12517
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: cost
+      unit: 
+      description: "services contract with SWB: \"Betriebsf\xFChrungsentgelte\""
+      value: 6280
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: cost
+      unit: 
+      description: 'services, contract with SWB: "Personalgestellung"'
+      value: 933
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: operating profit
+      unit: 
+      description: Commodity price
+      value: 17624
+      isVisible: 1
+      isEditable: 1
+    - id: 
+      name: after tax profit
+      unit: 
+      description: 
+      value: 2024
+      isVisible: 1
+      isEditable: 0
   parametersEconomicsOutput:
-    parameters: []
+    parameters:
+    - id: 
+      name: Operations & Maintenance contract SWB AMB
+      unit: 
+      description: 
+      value: 3
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Power Purchase Agreement SWB AMB
+      unit: 
+      description: 
+      value: 0.22
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Natural Gas Purchase Agreement SWB AMB
+      unit: 
+      description: 
+      value: 206.7
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: ETS price scenario
+      unit: 
+      description: 
+      value: 73.63
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Profit
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 102
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Revenue
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 63.8
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Emission
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 420
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Emissions in Co2 t per year ETS discharge
+      unit: 
+      description: 420 g Co2 per kWh (1000 MWh) * 0,3 * 73,63 (ETS price 2022) =
+        9277 Euro
+      value: 420
+      isVisible: 0
+      isEditable: 0
   parametersEnvironmentInput:
-    parameters: []
+    parameters:
+    - id: 
+      name: 
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0
   parametersEnvironmentOutput:
-    parameters: []
+    parameters:
+    - id: 
+      name: 
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0
   parametersPoliticsInput:
-    parameters: []
+    parameters:
+    - id: 
+      name: operating time
+      unit: 
+      description: 
+      value: 3408
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Share of free allowances
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0
   parametersPoliticsOutput:
-    parameters: []
+    parameters:
+    - id: 
+      name: Operating time
+      unit: 
+      description: 
+      value: 3408
+      isVisible: 0
+      isEditable: 0
+    - id: 
+      name: Share of free allowances
+      unit: 
+      description: 
+      value: 0
+      isVisible: 0
+      isEditable: 0

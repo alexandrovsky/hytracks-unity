@@ -1,0 +1,18 @@
+{
+    "parameters": [
+        {
+            "id": "pol_0",
+            "name": "operating time",
+            "units": "h",
+            "description": "",
+            "value": 3408
+        },
+        {
+            "id": "pol_1",
+            "name": "Share of free allowances",
+            "units": "Count",
+            "description": "",
+            "value": 0
+        }
+    ]
+}

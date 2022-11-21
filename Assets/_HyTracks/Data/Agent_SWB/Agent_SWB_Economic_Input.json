@@ -1,0 +1,52 @@
+{
+
+    "parameters": [
+        {
+            "id":  "eco_0",
+            "name": "cost",
+            "units": "1000 EUR",
+            "description": "raw material and other commodity",
+            "value": 45575
+        },
+        {
+            "id": "eco_1",
+            "name": "cost",
+            "units": "1000 EUR",
+            "description": "services",
+            "value": 12517
+        },
+        {
+            "id": "eco_2",
+            "name": "cost",
+            "units": "1000 EUR",
+            "description": "services contract with SWB: \"Betriebsführungsentgelte\"",
+            "value": 6280
+        },
+        {
+            "id": "eco_3",
+            "name": "cost",
+            "units": "1000 EUR",
+            "description": "services, contract with SWB: \"Personalgestellung\"",
+            "value": 933
+        },
+        {
+            "id": "eco_4",
+            "name": "operating profit",
+            "units": "1000 EUR",
+            "description": "Commodity price",
+            "value": 17624,
+            "isVisible": true,
+            "isEditable": true
+        },
+        {
+            "id": "eco_5",
+            "name": "after tax profit",
+            "units": "1000 Euro",
+            "description": "",
+            "value": 2024,
+            "isVisible": true,
+            "isEditable": false
+        }
+    ]
+}
+
