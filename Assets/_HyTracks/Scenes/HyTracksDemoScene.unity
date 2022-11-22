@@ -1697,6 +1697,9 @@ MonoBehaviour:
     tuioID: 1
     cursor: {fileID: 835303756125898039, guid: d7d65324a9ae54dd2a7db3d3e9f03598, type: 3}
   agentObjectCursors:
+  - name: SWB
+    tuioID: 2
+    cursor: {fileID: 2973438055894476114, guid: ce340cf4642004b38a884204627a54a6, type: 3}
   - name: AMB
     tuioID: 3
     cursor: {fileID: 2973438055894476114, guid: de65445926cf5480a98eae79cca306b0, type: 3}

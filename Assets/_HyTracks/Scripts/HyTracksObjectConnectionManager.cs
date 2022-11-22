@@ -50,23 +50,25 @@ namespace HyTracks
 			{
 				bool otherIsInput = data.inputObjectID != obj.objectId;
 				int otherId = data.inputObjectID == obj.objectId ? data.outputObjectID : data.inputObjectID;
-				if (cursorManager.cursors.ContainsKey(otherId))
+				if (cursorManager.tangibles.ContainsKey(otherId))
 				{
 					var connection = connectionPool.Get();
 					connection.connectionData = data;
-
+					connection.connector.enabled = true;
+					connection.connector.transforms = new RectTransform[2];
+					var otherTransform = cursorManager.tangibles[otherId].transform as RectTransform;
 					if (otherIsInput)
 					{
-						connection.connector.transforms.Append(cursorManager.cursors[otherId].transform);
-						connection.connector.transforms.Append(this.transform);
+						connection.connector.transforms[0] = otherTransform;
+						connection.connector.transforms[1] = obj.transform as RectTransform;
 					}
 					else
 					{
-						connection.connector.transforms.Append(this.transform);
-						connection.connector.transforms.Append(cursorManager.cursors[otherId].transform);
+						connection.connector.transforms[0] = obj.transform as RectTransform; 
+						connection.connector.transforms[1] = otherTransform;
 					}
 
-					connection.connector.enabled = true;
+					
 					connection.rect.SetParent(this.transform);
 					connection.rect.SetAsLastSibling();
 
@@ -101,7 +103,7 @@ namespace HyTracks
 
 		private HyTracksObjectConnection instantiateConnectionProxy()
 		{
-			return Instantiate(connectionPrefab);
+			return Instantiate(connectionPrefab, this.transform);
 		}
 
 		private void clearProxy(HyTracksObjectConnection connection)

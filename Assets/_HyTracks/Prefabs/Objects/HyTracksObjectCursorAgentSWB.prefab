@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 183852, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
       propertyPath: m_Name
-      value: HyTracksObjectCursorAgentAMB
+      value: HyTracksObjectCursorAgentSWB
       objectReference: {fileID: 0}
     - target: {fileID: 11421528, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
       propertyPath: m_Texture
@@ -422,7 +422,7 @@ PrefabInstance:
     - target: {fileID: 8716335216578669716, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
       propertyPath: parameters
       value: 
-      objectReference: {fileID: 11400000, guid: 743b793915cfa4d03978d2f6a1c29720, type: 2}
+      objectReference: {fileID: 11400000, guid: eb0b5a7ccc40c4f6294480faaab2e5d8, type: 2}
     - target: {fileID: 8908719404765356242, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   ShowSize: 0
   ShowAngle: 0
   objectId: 0
-  parameters: {fileID: 11400000, guid: 743b793915cfa4d03978d2f6a1c29720, type: 2}
+  parameters: {fileID: 11400000, guid: eb0b5a7ccc40c4f6294480faaab2e5d8, type: 2}
   parametersPefabUI: {fileID: 7987517299045048881, guid: f63d461775b2744a18a1d4baa6bd9273, type: 3}
   connectionPrefab: {fileID: 0}
   uiInputSocial: {fileID: 3274929302450666814}
