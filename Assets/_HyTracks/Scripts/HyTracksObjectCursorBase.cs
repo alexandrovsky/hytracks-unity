@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TouchScript.Behaviors.Cursors;
 using System;
+using TouchScript.Pointers;
+using System.Security.Cryptography;
 
 namespace HyTracks {
     public class HyTracksObjectCursorBase:ObjectCursor {
@@ -22,11 +24,6 @@ namespace HyTracks {
 		public RectTransform uiInputEconomic;
 		public RectTransform uiInputEnvirontment;
 		public RectTransform uiInputPolitics;
-
-		[Header("Connections")]
-		[SerializeField]
-		public HyTracksObjectConnections connections;
-
 
 
 		public HyTracksParametersList GetInputParameters(STEEPDimension steep)
@@ -77,10 +74,17 @@ namespace HyTracks {
 			
 		}
 
-		private void Start()
+		public new void Init(RectTransform parent, IPointer pointer)
 		{
+			base.Init(parent, pointer);
+			parameters.LoadDataFromJSONFiles();
 			InitUI();
 		}
+
+		//private void Start()
+		//{
+		//	InitUI();
+		//}
 
 	}
 

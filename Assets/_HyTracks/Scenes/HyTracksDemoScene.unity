@@ -1700,7 +1700,6 @@ MonoBehaviour:
   - name: AMB
     tuioID: 3
     cursor: {fileID: 2973438055894476114, guid: de65445926cf5480a98eae79cca306b0, type: 3}
-  useDPI: 1
   cursorSize: 1
   cursorPixelSize: 64
 --- !u!1 &963194225
@@ -2654,6 +2653,8 @@ MonoBehaviour:
       outputObjectID: 3
       inputParameterID: tec_0
       outputParameterID: pol_0
+  connectionPrefab: {fileID: 537582630767020407, guid: 6a83a3999a5e84dd2bf988ea001b9d56, type: 3}
+  openConnections: []
 --- !u!1 &1335940173
 GameObject:
   m_ObjectHideFlags: 0

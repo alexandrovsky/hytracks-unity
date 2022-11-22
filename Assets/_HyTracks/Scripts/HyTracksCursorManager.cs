@@ -7,6 +7,7 @@ using UnityEngine.Profiling;
 using TouchScript.Behaviors.Cursors;
 using TouchScript;
 using System;
+using Unity.VisualScripting;
 
 namespace HyTracks {
 
@@ -121,7 +122,7 @@ namespace HyTracks {
 
 		[SerializeField]
 		private List<HyTracksCursorEntry<HyTracksObjectCursorAgent>> agentObjectCursors;
-		[SerializeField]
+
 
 
 		[ToggleLeft]
@@ -133,14 +134,17 @@ namespace HyTracks {
 		[SerializeField]
 		private uint cursorPixelSize = 64;
 
-		private RectTransform rect;
+		public RectTransform rect { get; private set; }
 		private ObjectPool<PointerCursor> mousePool;
 		private ObjectPool<PointerCursor> touchPool;
 		private ObjectPool<PointerCursor> penPool;
 		private ObjectPool<ObjectCursor> objectPool;
-		private ObjectPool<HyTracksObjectCursorModel> modelObjectPool;
 
-		private Dictionary<int,PointerCursor> cursors = new Dictionary<int,PointerCursor>(10);
+		private Dictionary<int, ObjectPool<HyTracksObjectCursorModel>> hyTracksModelObjectsPool;
+		private Dictionary<int, ObjectPool<HyTracksObjectCursorAgent>> hyTracksAgentObjectsPool;
+
+		public Dictionary<int, PointerCursor> cursors { get; private set; }
+		public Dictionary<int, PointerCursor> tangibles { get; private set; }
 
 		private CustomSampler cursorSampler;
 
@@ -150,6 +154,8 @@ namespace HyTracks {
 
 		private void Awake()
 		{
+			cursors = new Dictionary<int, PointerCursor>(10);
+			tangibles = new Dictionary<int, PointerCursor>(10);
 			cursorSampler = CustomSampler.Create("[TouchScript] Update Cursors");
 
 			cursorSampler.Begin();
@@ -158,6 +164,31 @@ namespace HyTracks {
 			touchPool = new ObjectPool<PointerCursor>(10,instantiateTouchProxy,null,clearProxy);
 			penPool = new ObjectPool<PointerCursor>(2,instantiatePenProxy,null,clearProxy);
 			objectPool = new ObjectPool<ObjectCursor>(2,instantiateObjectProxy,null,clearProxy);
+
+
+			hyTracksModelObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorModel>>();
+			hyTracksAgentObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorAgent>>();
+
+
+			foreach (HyTracksCursorEntry<HyTracksObjectCursorModel> entry in modelObjectCursors)
+			{
+				var pool = new ObjectPool<HyTracksObjectCursorModel>(2, () => {
+					var obj = Instantiate(entry.cursor);
+					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
+					return obj;
+				}, null, clearProxy);
+				hyTracksModelObjectsPool.Add(entry.tuioID, pool);
+			}
+
+			foreach (HyTracksCursorEntry<HyTracksObjectCursorAgent> entry in agentObjectCursors)
+			{
+				var pool = new ObjectPool<HyTracksObjectCursorAgent>(2, () => {
+					var obj = Instantiate(entry.cursor);
+					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
+					return obj;
+				}, null, clearProxy);
+				hyTracksAgentObjectsPool.Add(entry.tuioID, pool);
+			}
 
 			updateCursorSize();
 
@@ -256,10 +287,23 @@ namespace HyTracks {
 						cursor = penPool.Get();
 						break;
 					case Pointer.PointerType.Object:
-							// TODO: update to the tangible dict
-						cursor = objectPool.Get();
-						//HyTracksObjectCursorBase objCursor = cursor as HyTracksObjectCursorBase;
-						//objCursor.objectId = pointer.Id;
+						// TODO: update to the tangible dict
+						int objectId = (pointer as ObjectPointer).ObjectId;
+
+						if (hyTracksModelObjectsPool.ContainsKey(objectId))
+						{
+							cursor = hyTracksModelObjectsPool[objectId].Get();
+						}
+						else if (hyTracksAgentObjectsPool.ContainsKey(objectId))
+						{
+							cursor = hyTracksAgentObjectsPool[objectId].Get();
+						}
+						else {
+							cursor = objectPool.Get();
+						}
+
+						tangibles.Add(objectId, cursor);
+						(cursor as HyTracksObjectCursorBase).objectId = objectId;
 						onTangibleAdded.Invoke(cursor as HyTracksObjectCursorBase);
 						break;
 					default:
@@ -296,10 +340,26 @@ namespace HyTracks {
 						penPool.Release(cursor);
 						break;
 					case Pointer.PointerType.Object:
-						// TODO: update to the tangible dict
-						onTangibleRemoved.Invoke(cursor as HyTracksObjectCursorBase);
-						objectPool.Release(cursor);						
 						
+						onTangibleRemoved.Invoke(cursor as HyTracksObjectCursorBase);
+						
+						var hyCursor = cursor as HyTracksObjectCursorBase;
+
+						if (hyTracksModelObjectsPool.ContainsKey(hyCursor.objectId))
+						{
+							hyTracksModelObjectsPool[hyCursor.objectId].Release(cursor);
+						}
+
+						else if (hyTracksAgentObjectsPool.ContainsKey(hyCursor.objectId))
+						{
+							hyTracksAgentObjectsPool[hyCursor.objectId].Release(cursor);
+						}
+						else
+						{
+							objectPool.Release(cursor);
+						}
+						
+						tangibles.Remove((cursor as HyTracksObjectCursorBase).objectId);
 						break;
 				}
 			}
