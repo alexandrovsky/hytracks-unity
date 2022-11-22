@@ -256,10 +256,11 @@ namespace TouchScript.Behaviors.Cursors
             hash = newHash;
         }
 
-        /// <summary>
-        /// Hides this instance.
-        /// </summary>
-        public void Hide()
+		
+		/// <summary>
+		/// Hides this instance.
+		/// </summary>
+		public void Hide()
         {
             hide();
         }
@@ -281,17 +282,17 @@ namespace TouchScript.Behaviors.Cursors
             defaultSize = rect.sizeDelta.x;
         }
 
-        #endregion
+		#endregion
 
-        #region Protected methods
-
-        /// <summary>
-        /// Hides (clears) this instance.
-        /// </summary>
-        protected virtual void hide()
+		#region Protected methods
+		
+		/// <summary>
+		/// Hides (clears) this instance.
+		/// </summary>
+		protected virtual void hide()
         {
-            gameObject.SetActive(false);
-            gameObject.name = "inactive pointer";
+            gameObject.SetActive(false);            
+			//gameObject.name = "inactive pointer";
         }
 
         /// <summary>
@@ -299,8 +300,8 @@ namespace TouchScript.Behaviors.Cursors
         /// </summary>
         protected virtual void show()
         {
-            gameObject.SetActive(true);
-        }
+			gameObject.SetActive(true);
+		}
 
         /// <summary>
         /// This method is called once when the cursor is initialized.

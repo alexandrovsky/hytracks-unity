@@ -140,8 +140,8 @@ namespace HyTracks {
 		private ObjectPool<PointerCursor> penPool;
 		private ObjectPool<ObjectCursor> objectPool;
 
-		private Dictionary<int, ObjectPool<HyTracksObjectCursorModel>> hyTracksModelObjectsPool;
-		private Dictionary<int, ObjectPool<HyTracksObjectCursorAgent>> hyTracksAgentObjectsPool;
+		private Dictionary<int, ObjectPool<HyTracksObjectCursorBase>> hyTracksObjectsPool;
+		
 
 		public Dictionary<int, PointerCursor> cursors { get; private set; }
 		public Dictionary<int, PointerCursor> tangibles { get; private set; }
@@ -166,28 +166,28 @@ namespace HyTracks {
 			objectPool = new ObjectPool<ObjectCursor>(2,instantiateObjectProxy,null,clearProxy);
 
 
-			hyTracksModelObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorModel>>();
-			hyTracksAgentObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorAgent>>();
+			hyTracksObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorBase>>();
+			
 
 
 			foreach (HyTracksCursorEntry<HyTracksObjectCursorModel> entry in modelObjectCursors)
 			{
-				var pool = new ObjectPool<HyTracksObjectCursorModel>(2, () => {
+				var pool = new ObjectPool<HyTracksObjectCursorBase>(2, () => {
 					var obj = Instantiate(entry.cursor);
 					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
-					return obj;
+					return obj as HyTracksObjectCursorBase;
 				}, null, clearProxy);
-				hyTracksModelObjectsPool.Add(entry.tuioID, pool);
+				hyTracksObjectsPool.Add(entry.tuioID, pool);
 			}
 
 			foreach (HyTracksCursorEntry<HyTracksObjectCursorAgent> entry in agentObjectCursors)
 			{
-				var pool = new ObjectPool<HyTracksObjectCursorAgent>(2, () => {
+				var pool = new ObjectPool<HyTracksObjectCursorBase>(2, () => {
 					var obj = Instantiate(entry.cursor);
 					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
-					return obj;
+					return obj as HyTracksObjectCursorBase;
 				}, null, clearProxy);
-				hyTracksAgentObjectsPool.Add(entry.tuioID, pool);
+				hyTracksObjectsPool.Add(entry.tuioID, pool);
 			}
 
 			updateCursorSize();
@@ -290,14 +290,10 @@ namespace HyTracks {
 						// TODO: update to the tangible dict
 						int objectId = (pointer as ObjectPointer).ObjectId;
 
-						if (hyTracksModelObjectsPool.ContainsKey(objectId))
+						if (hyTracksObjectsPool.ContainsKey(objectId))
 						{
-							cursor = hyTracksModelObjectsPool[objectId].Get();
-						}
-						else if (hyTracksAgentObjectsPool.ContainsKey(objectId))
-						{
-							cursor = hyTracksAgentObjectsPool[objectId].Get();
-						}
+							cursor = hyTracksObjectsPool[objectId].Get();
+						}						
 						else {
 							cursor = objectPool.Get();
 						}
@@ -345,14 +341,9 @@ namespace HyTracks {
 						
 						var hyCursor = cursor as HyTracksObjectCursorBase;
 
-						if (hyTracksModelObjectsPool.ContainsKey(hyCursor.objectId))
+						if (hyTracksObjectsPool.ContainsKey(hyCursor.objectId))
 						{
-							hyTracksModelObjectsPool[hyCursor.objectId].Release(cursor);
-						}
-
-						else if (hyTracksAgentObjectsPool.ContainsKey(hyCursor.objectId))
-						{
-							hyTracksAgentObjectsPool[hyCursor.objectId].Release(cursor);
+							hyTracksObjectsPool[hyCursor.objectId].Release(cursor);
 						}
 						else
 						{
