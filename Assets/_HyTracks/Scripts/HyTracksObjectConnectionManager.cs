@@ -106,14 +106,20 @@ namespace HyTracks
 			return Instantiate(connectionPrefab, this.transform);
 		}
 
+		private void getConnectionProxy(HyTracksObjectConnection connection)
+		{
+			connection.gameObject.SetActive(true);
+		}
+
 		private void clearProxy(HyTracksObjectConnection connection)
 		{
-			connection.connector.enabled = false;
+			connection.gameObject.SetActive(false);
+			//connection.connector.enabled = false;
 		}
 
 		private void Awake()
 		{
-			connectionPool = new ObjectPool<HyTracksObjectConnection>(10, instantiateConnectionProxy, null, clearProxy);
+			connectionPool = new ObjectPool<HyTracksObjectConnection>(10, instantiateConnectionProxy, getConnectionProxy, clearProxy);
 			openConnections = new List<HyTracksObjectConnection>();
 		}
 		// Start is called before the first frame update
