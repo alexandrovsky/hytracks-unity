@@ -178,11 +178,13 @@ MonoBehaviour:
   ShowAngle: 1
   parameters: {fileID: 11400000, guid: 416ee7db3a5e04a47ab8a17790d8dd69, type: 2}
   parametersPefabUI: {fileID: 7987517299045048881, guid: f63d461775b2744a18a1d4baa6bd9273, type: 3}
+  connectionPrefab: {fileID: 8984129688455864250, guid: 1640cac987c714e0a8b296592fd18468, type: 3}
   uiInputSocial: {fileID: 4222568067534448232}
   uiInputTechnology: {fileID: 2937085714029201404}
   uiInputEconomic: {fileID: 2803361132959883343}
   uiInputEnvirontment: {fileID: 1738756542917938623}
   uiInputPolitics: {fileID: 294154999655569080}
+  connections: {fileID: 5737005850306240806}
 --- !u!222 &4014739495290891318
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -459,100 +461,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1962179022880162996
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 240484523722351527}
-  - component: {fileID: 8795071366217209486}
-  - component: {fileID: 3229367444754291341}
-  - component: {fileID: 5312730637239964034}
-  m_Layer: 0
-  m_Name: HyTracksParameterConnection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &240484523722351527
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962179022880162996}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1689850788583756912}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8795071366217209486
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962179022880162996}
-  m_CullTransparentMesh: 1
---- !u!114 &3229367444754291341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962179022880162996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b33b2e663e78774c9f0c9af55018725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_improveResolution: 0
-  m_Resolution: 0
-  m_useNativeSize: 0
-  m_points:
-  - {x: 0, y: 0}
-  lineThickness: 2
-  relativeSize: 0
-  lineList: 0
-  lineCaps: 0
-  bezierSegmentsPerCurve: 10
-  LineJoins: 0
-  BezierMode: 0
-  drivenExternally: 0
---- !u!114 &5312730637239964034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962179022880162996}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b52ee3a4491f3742bb35fa3eec798d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transforms: []
 --- !u!1 &2224840679317586535
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,8 +714,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 240484523722351527}
+  m_Children: []
   m_Father: {fileID: 22471328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -828,43 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95334ded5c5574b6c8d2725195b5b274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connections:
-  - inputObjectID: 0
-    outputObjectID: 0
-    inputParameter:
-      id: 
-      name: 
-      unit: 
-      description: 
-      value: 0
-      isVisible: 0
-      isEditable: 0
-    outputParameter:
-      id: 
-      name: 
-      unit: 
-      description: 
-      value: 0
-      isVisible: 0
-      isEditable: 0
-  - inputObjectID: 0
-    outputObjectID: 0
-    inputParameter:
-      id: 
-      name: 
-      unit: 
-      description: 
-      value: 0
-      isVisible: 0
-      isEditable: 0
-    outputParameter:
-      id: 
-      name: 
-      unit: 
-      description: 
-      value: 0
-      isVisible: 0
-      isEditable: 0
+  connections: []
 --- !u!1 &8204538494473922271
 GameObject:
   m_ObjectHideFlags: 0

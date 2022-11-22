@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Profiling;
 using TouchScript.Behaviors.Cursors;
 using TouchScript;
+using System;
+
 namespace HyTracks {
 
 
@@ -19,6 +21,12 @@ namespace HyTracks {
 	public class HyTracksCursorManager:MonoBehaviour {
 
 		#region Public properties
+
+		public delegate void HyTracksTanbgileEventHandler(HyTracksObjectCursorBase obj);
+
+		public event HyTracksTanbgileEventHandler onTangibleAdded;
+		public event HyTracksTanbgileEventHandler onTangibleRemoved;
+		public event HyTracksTanbgileEventHandler onTangibleUpdated;
 
 		/// <summary>
 		/// Prefab to use as mouse cursors template.
@@ -238,20 +246,24 @@ namespace HyTracks {
 
 				PointerCursor cursor;
 				switch(pointer.Type) {
-				case Pointer.PointerType.Mouse:
-					cursor = mousePool.Get();
-					break;
-				case Pointer.PointerType.Touch:
-					cursor = touchPool.Get();
-					break;
-				case Pointer.PointerType.Pen:
-					cursor = penPool.Get();
-					break;
-				case Pointer.PointerType.Object:
-					cursor = objectPool.Get();
-					break;
-				default:
-					continue;
+					case Pointer.PointerType.Mouse:
+						cursor = mousePool.Get();
+						break;
+					case Pointer.PointerType.Touch:
+						cursor = touchPool.Get();
+						break;
+					case Pointer.PointerType.Pen:
+						cursor = penPool.Get();
+						break;
+					case Pointer.PointerType.Object:
+							// TODO: update to the tangible dict
+						cursor = objectPool.Get();
+						//HyTracksObjectCursorBase objCursor = cursor as HyTracksObjectCursorBase;
+						//objCursor.objectId = pointer.Id;
+						onTangibleAdded.Invoke(cursor as HyTracksObjectCursorBase);
+						break;
+					default:
+						continue;
 				}
 
 				cursor.Size = cursorPixelSize;
@@ -274,18 +286,21 @@ namespace HyTracks {
 				cursors.Remove(pointer.Id);
 
 				switch(pointer.Type) {
-				case Pointer.PointerType.Mouse:
-					mousePool.Release(cursor);
-					break;
-				case Pointer.PointerType.Touch:
-					touchPool.Release(cursor);
-					break;
-				case Pointer.PointerType.Pen:
-					penPool.Release(cursor);
-					break;
-				case Pointer.PointerType.Object:
-					objectPool.Release(cursor);
-					break;
+					case Pointer.PointerType.Mouse:
+						mousePool.Release(cursor);
+						break;
+					case Pointer.PointerType.Touch:
+						touchPool.Release(cursor);
+						break;
+					case Pointer.PointerType.Pen:
+						penPool.Release(cursor);
+						break;
+					case Pointer.PointerType.Object:
+						// TODO: update to the tangible dict
+						onTangibleRemoved.Invoke(cursor as HyTracksObjectCursorBase);
+						objectPool.Release(cursor);						
+						
+						break;
 				}
 			}
 
@@ -317,6 +332,22 @@ namespace HyTracks {
 				PointerCursor cursor;
 				if(!cursors.TryGetValue(pointer.Id,out cursor)) continue;
 				cursor.UpdatePointer(pointer);
+
+
+				switch (pointer.Type)
+				{
+					case Pointer.PointerType.Mouse:						
+						break;
+					case Pointer.PointerType.Touch:						
+						break;
+					case Pointer.PointerType.Pen:						
+						break;
+					case Pointer.PointerType.Object:
+						// TODO: update to the tangible dict
+						onTangibleUpdated.Invoke(cursor as HyTracksObjectCursorBase);
+						break;
+				}
+
 			}
 
 			cursorSampler.End();

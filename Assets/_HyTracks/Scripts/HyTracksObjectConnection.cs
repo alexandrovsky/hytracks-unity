@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +13,12 @@ namespace HyTracks
 		public int outputObjectID;
         public string inputParameterID;
 		public string outputParameterID;
+	}
+
+
+	[System.Serializable]
+	public struct HyTracksObjectConnectionList
+	{
+		public List<HyTracksObjectConnection> connections;
 	}
 }

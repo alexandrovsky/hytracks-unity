@@ -1,0 +1,11 @@
+{        
+    "connections" : [
+        {
+            "id": "0",
+            "inputObjectID": "2",
+            "outputObjectID": "3",
+            "inputParameterID":  "tec_0",            
+            "outputParameterID":  "pol_0"
+        }
+    ]
+}

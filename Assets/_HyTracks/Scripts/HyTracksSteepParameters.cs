@@ -6,7 +6,7 @@ using System;
 namespace HyTracks
 {
     [CreateAssetMenu(menuName = "HyTracks/SteepParameters")]
-    public class HyTracksSteepParameters:ScriptableObject {
+    public class HyTracksSteepParameters:HyTracksSteepData {
         public DateTime date;
         public string title = "Bau Scenario 2022";
 
@@ -24,20 +24,6 @@ namespace HyTracks
         public TextAsset parametersEnvironmentOutputJSON;
         public TextAsset parametersPoliticsOutputJSON;
 
-
-		[Header("Input Connections Text Files")]
-		public TextAsset connectionsSocialInputJSON;
-		public TextAsset connectionsTechnologyInputJSON;
-		public TextAsset connectionsEconomicsInputJSON;
-		public TextAsset connectionsEnvironmentInputJSON;
-		public TextAsset connectionsPoliticsInputJSON;
-
-		[Header("Output Connections Text Files")]
-		public TextAsset connectionsSocialOutputJSON;
-		public TextAsset connectionsTechnologyOutputJSON;
-		public TextAsset connectionsEconomicsOutputJSON;
-		public TextAsset connectionsEnvironmentOutputJSON;
-		public TextAsset connectionsPoliticsOutputJSON;
 
 		[Header("SOCIAL")]
         [Space(10)]
@@ -60,38 +46,21 @@ namespace HyTracks
         public HyTracksParametersList parametersPoliticsInput;
         public HyTracksParametersList parametersPoliticsOutput;
 
-        public Dictionary<STEEPDimension,HyTracksParametersList> parametersInput { private set; get; }
-        public Dictionary<STEEPDimension,HyTracksParametersList> parametersOutput { private set; get; }
 
-        [EditorCools.Button]
-        void GenerateParameterDicts() {
-            parametersInput = new Dictionary<STEEPDimension,HyTracksParametersList>() {
-                {STEEPDimension.SOCIAL, parametersSocialInput },
-                {STEEPDimension.TECHNOLOGY, parametersTechnologyInput},
-                {STEEPDimension.ECONOMICS, parametersEconomicsInput},
-                {STEEPDimension.ENVIRONMENT, parametersEnvironmentInput},
-                {STEEPDimension.POLITICS, parametersPoliticsInput},
-            };
+		public Dictionary<STEEPDimension, HyTracksParametersList> parametersInput { private set; get; }
+		public Dictionary<STEEPDimension, HyTracksParametersList> parametersOutput { private set; get; }
 
-            parametersOutput = new Dictionary<STEEPDimension,HyTracksParametersList>() {
-                {STEEPDimension.SOCIAL, parametersSocialOutput},
-                {STEEPDimension.TECHNOLOGY, parametersTechnologyOutput},
-                {STEEPDimension.ECONOMICS, parametersEconomicsOutput},
-                {STEEPDimension.ENVIRONMENT, parametersEnvironmentOutput},
-                {STEEPDimension.POLITICS, parametersPoliticsOutput},
-            };
-        }
-        
 
-        private void OnEnable()
+
+		private void OnEnable()
         {
-            LoadParametersFromFiles();
-            GenerateParameterDicts();
+			LoadDataFromJSONFiles();
+            GenerateDicts();
         }
 
 
         [EditorCools.Button]
-        void LoadParametersFromFiles()
+		public override void LoadDataFromJSONFiles()
         {
             // INPUTS
             if(parametersSocialInputJSON != null) {
@@ -126,6 +95,26 @@ namespace HyTracks
             if(parametersPoliticsOutputJSON != null) {
                 parametersPoliticsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsOutputJSON.text);
             }
-        }
-    }
+		}
+
+		[EditorCools.Button]
+		void GenerateDicts()
+		{
+			parametersInput = new Dictionary<STEEPDimension, HyTracksParametersList>() {
+				{STEEPDimension.SOCIAL, parametersSocialInput },
+				{STEEPDimension.TECHNOLOGY, parametersTechnologyInput},
+				{STEEPDimension.ECONOMICS, parametersEconomicsInput},
+				{STEEPDimension.ENVIRONMENT, parametersEnvironmentInput},
+				{STEEPDimension.POLITICS, parametersPoliticsInput},
+			};
+
+			parametersOutput = new Dictionary<STEEPDimension, HyTracksParametersList>() {
+				{STEEPDimension.SOCIAL, parametersSocialOutput},
+				{STEEPDimension.TECHNOLOGY, parametersTechnologyOutput},
+				{STEEPDimension.ECONOMICS, parametersEconomicsOutput},
+				{STEEPDimension.ENVIRONMENT, parametersEnvironmentOutput},
+				{STEEPDimension.POLITICS, parametersPoliticsOutput},
+			};
+		}
+	}
 }

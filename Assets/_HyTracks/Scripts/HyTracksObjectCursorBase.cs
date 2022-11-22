@@ -8,15 +8,25 @@ using System;
 namespace HyTracks {
     public class HyTracksObjectCursorBase:ObjectCursor {
 
+		public int objectId;
+		[Header("Parameters")]
 		public HyTracksSteepParameters parameters;
+		[Header("Prefabs")]
 		public GameObject parametersPefabUI;
+		public GameObject connectionPrefab;
 
 
+		[Header("Pie Menu UIs")]
 		public RectTransform uiInputSocial;
 		public RectTransform uiInputTechnology;
 		public RectTransform uiInputEconomic;
 		public RectTransform uiInputEnvirontment;
 		public RectTransform uiInputPolitics;
+
+		[Header("Connections")]
+		[SerializeField]
+		public HyTracksObjectConnections connections;
+
 
 
 		public HyTracksParametersList GetInputParameters(STEEPDimension steep)
