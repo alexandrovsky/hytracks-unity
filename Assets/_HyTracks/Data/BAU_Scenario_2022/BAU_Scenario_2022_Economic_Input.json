@@ -6,7 +6,8 @@
             "name": "sells O&M for AMB",
             "units": "",
             "description": "",
-            "value": 0
+            "value": 0,
+            "isVisible": true
         },
         {
             "id": "eco_1",

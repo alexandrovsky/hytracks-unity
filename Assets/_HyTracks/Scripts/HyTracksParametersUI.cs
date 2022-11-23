@@ -20,7 +20,7 @@ namespace HyTracks
         [SerializeField]
         TMP_Text unitsText;
 
-        public HyTracksParametersBase parameters { get; private set;}
+		public HyTracksParametersBase parameters { get; private set;}
 
         public void Init(HyTracksParametersBase parameters)
 		{

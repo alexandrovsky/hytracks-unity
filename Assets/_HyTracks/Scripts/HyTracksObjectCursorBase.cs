@@ -39,11 +39,11 @@ namespace HyTracks {
 		}
 
 
-		void InitUI() {
+		void InitUI() {			
 			foreach(STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
 				HyTracksParametersList paramList = GetInputParameters(dim);
-				foreach(HyTracksParametersBase p in paramList.parameters) {
-					if(p.isVisible) {
+				foreach(HyTracksParametersBase parameters in paramList.parameters) {
+					if(parameters.isVisible) {
 						RectTransform uiParent = null;
 						switch(dim) {
 						case STEEPDimension.SOCIAL:
@@ -69,21 +69,41 @@ namespace HyTracks {
 						
 						DynamicPanelsCanvas dpc = uiParent.GetComponent<DynamicPanelsCanvas>();
 						
+
+						GameObject newUI = Instantiate(parametersPefabUI, uiParent);
 						
-						GameObject newUI = Instantiate(parametersPefabUI,uiParent);
 						HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
-						ui.Init(p);
+						ui.Init(parameters);
 
 
 						Panel panel = PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
 						panel[0].Label = ui.parameters.name;
+						panel.DockToRoot(Direction.Top);						
+						panel.FloatingSize = new Vector2(400, 400);
+						//dpc.ForceRebuildLayoutImmediate();
+
+						//(dpc.RootPanelGroup[0] as Panel).AddTab(panel.transform as RectTransform);
+						//dpc.ForceRebuildLayoutImmediate();
+
+						//if (dpc.RootPanelGroup.Count == 1)
+						//{
+
+						//}
+						//else
+						//{
+						//	(dpc.RootPanelGroup[0] as Panel).AddTab(newUI.transform as RectTransform);
+						//}
+
+						//dpc.RootPanelGroup.AddElement(panel);
+						//dpc.RootPanelGroup.DockToPanel(panel, Direction.Right);
+
 						//RectTransform newUIrect = newUI.transform as RectTransform;
-						//panel.AddTab(newUIrect);
+						//panel.AddTab(newUI);
 
 						//PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
 						//LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
 
-						dpc.ForceRebuildLayoutImmediate();
+						//dpc.ForceRebuildLayoutImmediate();
 					}					
 				}
 			}

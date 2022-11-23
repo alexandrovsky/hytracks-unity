@@ -5,7 +5,9 @@
             "name": "",
             "units": "",
             "description": "",
-            "value": 0
+            "value": 0,
+            "isVisible": true,
+            "isEditable": false
         }
     ]
 }

@@ -949,7 +949,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4722480638646446776}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 5835523077452718836}
   - component: {fileID: 4901389354208333618}
   m_Layer: 5
-  m_Name: ContentPanel
+  m_Name: DynamicContentPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,10 +1039,10 @@ RectTransform:
   m_Father: {fileID: 2170196880073997649}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 0}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3621039843768876352
 MonoBehaviour:
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_id: a63a520a-8bdf-459d-a10c-9221efa01c2b
   m_leaveFreeSpace: 1
-  minimumFreeSpace: {x: 50, y: 50}
+  minimumFreeSpace: {x: 10, y: 10}
   freeSpaceTargetTransform: {fileID: 0}
   PreventDetachingLastDockedPanel: 0
   m_panelResizableAreaLength: 12
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6762805771119631514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
