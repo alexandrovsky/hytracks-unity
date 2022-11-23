@@ -53,13 +53,14 @@ namespace HyTracks
 				if (cursorManager.tangibles.ContainsKey(otherId))
 				{
 					var connection = connectionPool.Get();
+					
 					connection.connectionData = data;
 					connection.connector.enabled = true;
 					connection.connector.transforms = new RectTransform[2];
 					var otherTransform = cursorManager.tangibles[otherId].transform as RectTransform;
 					if (otherIsInput)
 					{
-						connection.connector.transforms[0] = otherTransform;
+						connection.connector.transforms[0] = otherTransform;						
 						connection.connector.transforms[1] = obj.transform as RectTransform;
 					}
 					else
