@@ -6,6 +6,8 @@ using TouchScript.Behaviors.Cursors;
 using System;
 using TouchScript.Pointers;
 using System.Security.Cryptography;
+using DynamicPanels;
+using Unity.VisualScripting;
 
 namespace HyTracks {
     public class HyTracksObjectCursorBase:ObjectCursor {
@@ -64,10 +66,24 @@ namespace HyTracks {
 							break;
 						}
 
+						
+						DynamicPanelsCanvas dpc = uiParent.GetComponent<DynamicPanelsCanvas>();
+						
+						
 						GameObject newUI = Instantiate(parametersPefabUI,uiParent);
 						HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
 						ui.Init(p);
-						LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
+
+
+						Panel panel = PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
+						panel[0].Label = ui.parameters.name;
+						//RectTransform newUIrect = newUI.transform as RectTransform;
+						//panel.AddTab(newUIrect);
+
+						//PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
+						//LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
+
+						dpc.ForceRebuildLayoutImmediate();
 					}					
 				}
 			}
@@ -78,11 +94,12 @@ namespace HyTracks {
 		{
 			base.Init(parent, pointer);
 			parameters.LoadDataFromJSONFiles();
-			InitUI();
+			//InitUI();
 		}
 
 		private void Start()
 		{
+			parameters.LoadDataFromJSONFiles();
 			InitUI();
 		}
 

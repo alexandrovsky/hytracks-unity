@@ -5,7 +5,10 @@
             "name": "Natural gas plant",
             "units": "hwH",
             "description": "",
-            "value": 0
+            "value": 0,
+            "isVisible": true,
+            "isEditable": false
+
         }
     ]
 }

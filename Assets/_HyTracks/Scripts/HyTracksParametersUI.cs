@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DynamicPanels;
 namespace HyTracks
 {
     public class HyTracksParametersUI : MonoBehaviour
@@ -19,7 +20,7 @@ namespace HyTracks
         [SerializeField]
         TMP_Text unitsText;
 
-        HyTracksParametersBase parameters;
+        public HyTracksParametersBase parameters { get; private set;}
 
         public void Init(HyTracksParametersBase parameters)
 		{
