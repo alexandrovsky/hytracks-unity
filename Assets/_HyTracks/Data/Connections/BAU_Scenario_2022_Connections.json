@@ -4,8 +4,15 @@
             "id": "0",
             "inputObjectID": "2",
             "outputObjectID": "3",
-            "inputParameterID":  "tec_0",            
-            "outputParameterID":  "pol_0"
+            "inputParameterID": "tec_0",
+            "outputParameterID": "pol_0"
+        },
+        {
+            "id": "1",
+            "inputObjectID": "1",
+            "outputObjectID": "3",
+            "inputParameterID": "tec_0",
+            "outputParameterID": "pol_0"
         }
     ]
 }

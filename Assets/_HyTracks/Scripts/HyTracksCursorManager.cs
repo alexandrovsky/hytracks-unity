@@ -298,8 +298,17 @@ namespace HyTracks {
 							cursor = objectPool.Get();
 						}
 
-						tangibles.Add(objectId, cursor);
 						(cursor as HyTracksObjectCursorBase).objectId = objectId;
+
+						if (tangibles.ContainsKey(objectId))
+						{
+							tangibles[objectId] = cursor;
+						}
+						else
+						{
+							tangibles.Add(objectId, cursor);
+						}
+
 						onTangibleAdded.Invoke(cursor as HyTracksObjectCursorBase);
 						break;
 					default:

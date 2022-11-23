@@ -81,10 +81,10 @@ namespace HyTracks {
 			InitUI();
 		}
 
-		//private void Start()
-		//{
-		//	InitUI();
-		//}
+		private void Start()
+		{
+			InitUI();
+		}
 
 	}
 

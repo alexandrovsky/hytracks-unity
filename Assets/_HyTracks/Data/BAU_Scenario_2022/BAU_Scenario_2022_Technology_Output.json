@@ -5,28 +5,36 @@
             "name": "Power",
             "units": "MW",
             "description": "",
-            "value": 444.50
+            "value": 444.50,
+            "isVisible": true,
+            "isEditable": false
         },
         {
             "id": "tec_1",
             "name": "Efficiency",
             "units": "T",
             "description": "",
-            "value": 0.58
+            "value": 0.58,
+            "isVisible": true,
+            "isEditable": false
         },
         {
             "id": "tec_2",
             "name": "Carbon Emission",
             "units": "T",
             "description": "",
-            "value": 457000
+            "value": 457000,
+            "isVisible": true,
+            "isEditable": false
         },
         {
             "id": "tec_3",
             "name": "Revenue",
             "units": "1000 EUR",
             "description": "",
-            "value": 80769
+            "value": 80769,
+            "isVisible": true,
+            "isEditable": false
         }
     ]
 }
