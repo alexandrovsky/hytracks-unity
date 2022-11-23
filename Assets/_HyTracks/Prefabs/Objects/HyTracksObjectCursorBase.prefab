@@ -615,8 +615,8 @@ MonoBehaviour:
   constrainIndicatorPosition: 1
   keepSelectedOption: 1
   defaultSelected: {fileID: 0}
-  deselectOptionIfOutsideBorders: 0
-  alignRadius: 60
+  deselectOptionIfOutsideBorders: 1
+  alignRadius: 64
   alignRotation: 0
   alignUpDirection: {x: 0, y: 1, z: 0}
   alignForwardDirection: {x: 0, y: 0, z: 1}
@@ -1451,6 +1451,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3194786260556613575, guid: ec6ded688881c42cea43c11387b9a3a8, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228190837203009481, guid: ec6ded688881c42cea43c11387b9a3a8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3276382512501361597, guid: ec6ded688881c42cea43c11387b9a3a8, type: 3}
