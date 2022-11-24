@@ -7,7 +7,7 @@ using System;
 using TouchScript.Pointers;
 using System.Security.Cryptography;
 using DynamicPanels;
-
+using uPIe;
 
 namespace HyTracks {
     public class HyTracksObjectCursorBase:ObjectCursor {
@@ -17,15 +17,30 @@ namespace HyTracks {
 		public HyTracksSteepParameters parameters;
 		[Header("Prefabs")]
 		public GameObject parametersPefabUI;
-		public GameObject connectionPrefab;
 
 
 		[Header("Pie Menu UIs")]
+		public uPIeMenu pieMenu;
 		public RectTransform uiInputSocial;
 		public RectTransform uiInputTechnology;
 		public RectTransform uiInputEconomic;
 		public RectTransform uiInputEnvirontment;
 		public RectTransform uiInputPolitics;
+
+		[EditorCools.Button]
+		void UpdatePieMenu()
+		{
+			foreach (var pie in transform.GetComponentsInChildren<uPIeMenu>())
+			{
+				pie.Realign();
+			}
+			pieMenu.Realign();
+			foreach (var btn in transform.GetComponentsInChildren<Selectable>()) {
+				(btn.transform as RectTransform).rotation = Quaternion.identity;
+			}
+
+
+		}
 
 
 		public HyTracksParametersList GetInputParameters(STEEPDimension steep)
