@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using OSCsharp.Data;
 using OSCsharp.Utils;
+using UnityEngine;
 
 namespace OSCsharp.Net
 {
@@ -179,6 +180,7 @@ namespace OSCsharp.Net
                 }
             } catch (Exception ex)
             {
+                Debug.LogError(ex);
                 if (!ConsumeParsingExceptions) onError(ex);
             }
         }
