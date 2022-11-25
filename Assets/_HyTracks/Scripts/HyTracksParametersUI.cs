@@ -20,9 +20,11 @@ namespace HyTracks
         [SerializeField]
         TMP_Text unitsText;
 
+        DynamicPanelsCanvas dynamicPanelsCanvas;
+
 		public HyTracksParametersBase parameters { get; private set;}
 
-        public void Init(HyTracksParametersBase parameters)
+        public void Init(HyTracksParametersBase parameters, DynamicPanelsCanvas dpc)
 		{
             this.parameters = parameters;
             nameText.text = parameters.name;
@@ -35,7 +37,15 @@ namespace HyTracks
                 }
             });
 
+            dynamicPanelsCanvas = dpc;
         }
+
+
+        public void RealignToOriginalDynamicPanel() {
+            PanelTab tab = PanelUtils.GetAssociatedTab(this.transform as RectTransform);
+            (dynamicPanelsCanvas.RootPanelGroup[0] as Panel).AddTab(tab);
+        }
+
 
 		// Start is called before the first frame update
 		void Start()

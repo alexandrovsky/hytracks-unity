@@ -442,14 +442,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8716335216578669716, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
---- !u!224 &1137788159083943657 stripped
+--- !u!224 &469646117473816777 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1738756542917938623, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
-  m_PrefabInstance: {fileID: 1723596147305126742}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1440727441474227694 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 294154999655569080, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1256492440625449887, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
   m_PrefabInstance: {fileID: 1723596147305126742}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1723596147304977786 stripped
@@ -478,24 +473,101 @@ MonoBehaviour:
   objectId: 0
   parameters: {fileID: 11400000, guid: 743b793915cfa4d03978d2f6a1c29720, type: 2}
   parametersPefabUI: {fileID: 7987517299045048881, guid: f63d461775b2744a18a1d4baa6bd9273, type: 3}
-  connectionPrefab: {fileID: 0}
-  uiInputSocial: {fileID: 3274929302450666814}
-  uiInputTechnology: {fileID: 4551431085313973418}
-  uiInputEconomic: {fileID: 3534476371720895257}
-  uiInputEnvirontment: {fileID: 1137788159083943657}
-  uiInputPolitics: {fileID: 1440727441474227694}
---- !u!224 &3274929302450666814 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4222568067534448232, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  themeSettings: {fileID: 11400000, guid: 9fb3138e3db364a5b8de471d0c349dc7, type: 2}
+  pieMenu: {fileID: 1723596147533515199}
+  uiInputSocial: {fileID: 1723596147734960383}
+  uiInputTechnology: {fileID: 469646117473816777}
+  uiInputEconomic: {fileID: 5392988894536445667}
+  uiInputEnvirontment: {fileID: 2631613952601779358}
+  uiInputPolitics: {fileID: 5897717323918164737}
+  dpcSoc: {fileID: 2637759829656700574}
+  dpcTec: {fileID: 3887945277082554024}
+  dpcEco: {fileID: 8766252091962978434}
+  dpcEnv: {fileID: 1726316770815947519}
+  dpcPol: {fileID: 7109111979881373024}
+--- !u!114 &1723596147533515199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 229446377, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
   m_PrefabInstance: {fileID: 1723596147305126742}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &3534476371720895257 stripped
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1471378983, guid: 2d7d74a2e00787042be8168217532959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &1723596147734960383 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2803361132959883343, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 430162857, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
   m_PrefabInstance: {fileID: 1723596147305126742}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &4551431085313973418 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2937085714029201404, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+--- !u!114 &1726316770815947519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8561229279930793, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
   m_PrefabInstance: {fileID: 1723596147305126742}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a4b7ae29894a4194f95800d897bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &2631613952601779358 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3705951641570179016, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2637759829656700574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3706538387832905160, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a4b7ae29894a4194f95800d897bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3887945277082554024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2458877647056492030, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a4b7ae29894a4194f95800d897bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &5392988894536445667 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6718472634694251957, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5897717323918164737 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5058553077495617623, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7109111979881373024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8449828491571430966, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a4b7ae29894a4194f95800d897bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8766252091962978434 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7947879472980618196, guid: 9ddd2ee6d729e4a9aaaa08e8af4753b7, type: 3}
+  m_PrefabInstance: {fileID: 1723596147305126742}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09a4b7ae29894a4194f95800d897bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

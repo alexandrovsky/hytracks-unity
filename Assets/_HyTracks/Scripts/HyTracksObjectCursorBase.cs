@@ -8,6 +8,8 @@ using TouchScript.Pointers;
 using System.Security.Cryptography;
 using DynamicPanels;
 using uPIe;
+using UnityEngine.UI.Extensions.Examples.FancyScrollViewExample06;
+using Unity.VisualScripting;
 
 namespace HyTracks {
     public class HyTracksObjectCursorBase:ObjectCursor {
@@ -18,14 +20,28 @@ namespace HyTracks {
 		[Header("Prefabs")]
 		public GameObject parametersPefabUI;
 
+		[Header("Theme Settings")]
+		public HyTracksThemeSettings themeSettings;
 
-		[Header("Pie Menu UIs")]
+		[Header("Pie SubMenu UIs")]
 		public uPIeMenu pieMenu;
 		public RectTransform uiInputSocial;
 		public RectTransform uiInputTechnology;
 		public RectTransform uiInputEconomic;
 		public RectTransform uiInputEnvirontment;
 		public RectTransform uiInputPolitics;
+
+		[Header("Dynamic Panels")]
+		[SerializeField]
+		DynamicPanelsCanvas dpcSoc;
+		[SerializeField]
+		DynamicPanelsCanvas dpcTec;
+		[SerializeField]
+		DynamicPanelsCanvas dpcEco;
+		[SerializeField]
+		DynamicPanelsCanvas dpcEnv;
+		[SerializeField]
+		DynamicPanelsCanvas dpcPol;
 
 		[EditorCools.Button]
 		void UpdatePieMenu()
@@ -35,11 +51,11 @@ namespace HyTracks {
 				pie.Realign();
 			}
 			pieMenu.Realign();
-			foreach (var btn in transform.GetComponentsInChildren<Selectable>()) {
+
+			foreach (var btn in transform.GetComponentsInChildren<Selectable>())
+			{
 				(btn.transform as RectTransform).rotation = Quaternion.identity;
 			}
-
-
 		}
 
 
@@ -53,74 +69,94 @@ namespace HyTracks {
 			return parameters.parametersOutput[steep];
 		}
 
+		void BuildParametersForDimension(HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
+			Panel panel = null;
+			for (int i = 0; i < parametersList.parameters.Count; i++)
+			{
+				GameObject newUI = Instantiate(parametersPefabUI, uiParent);
 
-		void InitUI() {			
-			foreach(STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
-				HyTracksParametersList paramList = GetInputParameters(dim);
-				foreach(HyTracksParametersBase parameters in paramList.parameters) {
-					if(parameters.isVisible) {
-						RectTransform uiParent = null;
-						switch(dim) {
-						case STEEPDimension.SOCIAL:
-							uiParent = uiInputSocial;
-							break;
-						case STEEPDimension.TECHNOLOGY:
-							uiParent = uiInputTechnology;
-							break;
-						case STEEPDimension.ECONOMICS:
-							uiParent = uiInputTechnology;
-							break;
-						case STEEPDimension.ENVIRONMENT:
-							uiParent = uiInputEnvirontment;
-							break;
-						case STEEPDimension.POLITICS:
-							uiParent = uiInputPolitics;
-							break;
-						}
-						if(uiParent == null) {
-							break;
-						}
-
-						
-						DynamicPanelsCanvas dpc = uiParent.GetComponent<DynamicPanelsCanvas>();
-						
-
-						GameObject newUI = Instantiate(parametersPefabUI, uiParent);
-						
-						HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
-						ui.Init(parameters);
-
-
-						Panel panel = PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
-						panel[0].Label = ui.parameters.name;
-						panel.DockToRoot(Direction.Top);						
-						panel.FloatingSize = new Vector2(400, 400);
-						//dpc.ForceRebuildLayoutImmediate();
-
-						//(dpc.RootPanelGroup[0] as Panel).AddTab(panel.transform as RectTransform);
-						//dpc.ForceRebuildLayoutImmediate();
-
-						//if (dpc.RootPanelGroup.Count == 1)
-						//{
-
-						//}
-						//else
-						//{
-						//	(dpc.RootPanelGroup[0] as Panel).AddTab(newUI.transform as RectTransform);
-						//}
-
-						//dpc.RootPanelGroup.AddElement(panel);
-						//dpc.RootPanelGroup.DockToPanel(panel, Direction.Right);
-
-						//RectTransform newUIrect = newUI.transform as RectTransform;
-						//panel.AddTab(newUI);
-
-						//PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
-						//LayoutRebuilder.ForceRebuildLayoutImmediate(uiParent);
-
-						//dpc.ForceRebuildLayoutImmediate();
-					}					
+				HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
+				ui.Init(parametersList.parameters[i], dpc);
+				
+				if (panel == null)
+				{
+					panel = PanelUtils.CreatePanelFor(newUI.transform as RectTransform, dpc);
+					
+					panel[0].Label = ui.parameters.name;
+					panel[0].Icon = sprite;
+					panel.DockToPanel(dpc.RootPanelGroup[0], Direction.Left);
+					panel.FloatingSize = themeSettings.parametersPanelFloatingSize;
 				}
+				else
+				{
+					PanelTab tab = panel.AddTab(newUI.transform as RectTransform);
+					tab.Label = ui.parameters.name;
+					tab.Icon = sprite;
+				}
+			}
+			dpc.ForceRebuildLayoutImmediate();
+			
+			panel.ResizeTo(new Vector2(256, 256));
+		}
+
+		
+
+		private void PanelNotificationCenter_OnStoppedDraggingTab(PanelTab tab)
+		{
+			Debug.Log($"Tab Drag Stop {tab.name} {tab.Index} {tab.Panel.name} {tab.Panel.IsDocked}");
+			
+			
+		}
+
+		private void PanelNotificationCenter_OnStartedDraggingTab(PanelTab tab)
+		{
+			Debug.Log($"Tab Drag Start {tab.name} {tab.Index}");
+			
+		}
+
+		void InitUI() {
+
+			PanelNotificationCenter.OnStartedDraggingTab += PanelNotificationCenter_OnStartedDraggingTab;
+			PanelNotificationCenter.OnStoppedDraggingTab += PanelNotificationCenter_OnStoppedDraggingTab;
+
+			foreach (STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
+
+				DynamicPanelsCanvas dpc = null;
+				RectTransform uiParent = null;
+				Sprite sprite = null;
+				switch (dim)
+				{
+					case STEEPDimension.SOCIAL:
+						uiParent = uiInputSocial;
+						dpc = dpcSoc;
+						sprite = themeSettings.themeSoc.sprite;
+						break;
+					case STEEPDimension.TECHNOLOGY:
+						uiParent = uiInputTechnology;
+						dpc = dpcTec;
+						sprite = themeSettings.themeTec.sprite;
+						break;
+					case STEEPDimension.ECONOMICS:
+						uiParent = uiInputEconomic;
+						dpc = dpcEco;
+						sprite = themeSettings.themeEco.sprite;
+						break;
+					case STEEPDimension.ENVIRONMENT:
+						uiParent = uiInputEnvirontment;
+						dpc = dpcEnv;
+						sprite = themeSettings.themeEnv.sprite;
+						break;
+					case STEEPDimension.POLITICS:
+						uiParent = uiInputPolitics;
+						dpc = dpcPol;
+						sprite = themeSettings.themePol.sprite;
+						break;
+				}
+				HyTracksParametersList paramList = GetInputParameters(dim);
+				BuildParametersForDimension(paramList, uiParent, dpc, sprite);
+				
+				
+				
 			}
 			
 		}
