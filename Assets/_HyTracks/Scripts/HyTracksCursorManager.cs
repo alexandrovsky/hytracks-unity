@@ -117,11 +117,11 @@ namespace HyTracks {
 
 
 		[SerializeField]
-		private List<HyTracksCursorEntry<HyTracksObjectCursorModel>> modelObjectCursors;
+		private List<HyTracksCursorEntry<HyTracksObjectCursorBase>> modelObjectCursors;
 		
 
 		[SerializeField]
-		private List<HyTracksCursorEntry<HyTracksObjectCursorAgent>> agentObjectCursors;
+		private List<HyTracksCursorEntry<HyTracksObjectCursorBase>> agentObjectCursors;
 
 
 
@@ -167,25 +167,17 @@ namespace HyTracks {
 
 
 			hyTracksObjectsPool = new Dictionary<int, ObjectPool<HyTracksObjectCursorBase>>();
-			
 
+			var tmpList = new List<HyTracksCursorEntry<HyTracksObjectCursorBase>>();
+			tmpList.AddRange(modelObjectCursors);
+			tmpList.AddRange(agentObjectCursors);
 
-			foreach (HyTracksCursorEntry<HyTracksObjectCursorModel> entry in modelObjectCursors)
+			foreach (HyTracksCursorEntry<HyTracksObjectCursorBase> entry in tmpList)
 			{
 				var pool = new ObjectPool<HyTracksObjectCursorBase>(2, () => {
 					var obj = Instantiate(entry.cursor);
 					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
-					return obj as HyTracksObjectCursorBase;
-				}, null, clearProxy);
-				hyTracksObjectsPool.Add(entry.tuioID, pool);
-			}
-
-			foreach (HyTracksCursorEntry<HyTracksObjectCursorAgent> entry in agentObjectCursors)
-			{
-				var pool = new ObjectPool<HyTracksObjectCursorBase>(2, () => {
-					var obj = Instantiate(entry.cursor);
-					obj.name = $"{entry.cursor.name}_{entry.tuioID}";
-					return obj as HyTracksObjectCursorBase;
+					return obj;
 				}, null, clearProxy);
 				hyTracksObjectsPool.Add(entry.tuioID, pool);
 			}

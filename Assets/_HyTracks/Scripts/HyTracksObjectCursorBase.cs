@@ -25,23 +25,36 @@ namespace HyTracks {
 
 		[Header("Pie SubMenu UIs")]
 		public uPIeMenu pieMenu;
-		public RectTransform uiInputSocial;
-		public RectTransform uiInputTechnology;
-		public RectTransform uiInputEconomic;
-		public RectTransform uiInputEnvirontment;
-		public RectTransform uiInputPolitics;
+		public RectTransform uiSocial;
+		public RectTransform uiTechnology;
+		public RectTransform uiEconomic;
+		public RectTransform uiEnvirontment;
+		public RectTransform uiPolitics;
 
-		[Header("Dynamic Panels")]
+		[Header("Dynamic Panels Inputs")]
 		[SerializeField]
-		DynamicPanelsCanvas dpcSoc;
+		DynamicPanelsCanvas dpcSocInput;
 		[SerializeField]
-		DynamicPanelsCanvas dpcTec;
+		DynamicPanelsCanvas dpcTecInput;
 		[SerializeField]
-		DynamicPanelsCanvas dpcEco;
+		DynamicPanelsCanvas dpcEcoInput;
 		[SerializeField]
-		DynamicPanelsCanvas dpcEnv;
+		DynamicPanelsCanvas dpcEnvInput;
 		[SerializeField]
-		DynamicPanelsCanvas dpcPol;
+		DynamicPanelsCanvas dpcPolInput;
+
+		[Header("Dynamic Panels Outputs")]
+		[SerializeField]
+		DynamicPanelsCanvas dpcSocOutput;
+		[SerializeField]
+		DynamicPanelsCanvas dpcTecOutput;
+		[SerializeField]
+		DynamicPanelsCanvas dpcEcoOutput;
+		[SerializeField]
+		DynamicPanelsCanvas dpcEnvOutput;
+		[SerializeField]
+		DynamicPanelsCanvas dpcPolOutput;
+
 
 		[EditorCools.Button]
 		void UpdatePieMenu()
@@ -120,8 +133,82 @@ namespace HyTracks {
 
 		private void PanelNotificationCenter_OnStartedDraggingTab(PanelTab tab)
 		{
-			Debug.Log($"Tab Drag Start {tab.name} {tab.Index}");
-			
+			Debug.Log($"Tab Drag Start {tab.name} {tab.Index}");			
+		}
+
+		void GetComponentsForDimension(HyTracksParametersType type, STEEPDimension dim, out DynamicPanelsCanvas dpc, out RectTransform uiParent, out Sprite sprite)
+		{
+			dpc = null;
+			uiParent = null;
+			sprite = null;
+
+			switch (dim)
+			{
+				case STEEPDimension.SOCIAL:
+					uiParent = uiSocial;
+					if (type == HyTracksParametersType.INPUT)
+					{						
+						dpc = dpcSocInput;
+					}
+					else
+					{
+						dpc = dpcSocOutput;
+					}
+					
+					sprite = themeSettings.themeSoc.sprite;
+					break;
+				case STEEPDimension.TECHNOLOGY:
+					uiParent = uiTechnology;
+					if (type == HyTracksParametersType.INPUT)
+					{
+						dpc = dpcTecInput;
+					}
+					else
+					{
+						dpc = dpcTecOutput;
+					}
+					sprite = themeSettings.themeTec.sprite;
+					break;
+				case STEEPDimension.ECONOMICS:
+					uiParent = uiEconomic;
+					if (type == HyTracksParametersType.INPUT)
+					{
+						dpc = dpcEcoInput;
+					}
+					else
+					{
+						dpc = dpcEcoOutput;
+					}
+					
+					sprite = themeSettings.themeEco.sprite;
+					break;
+				case STEEPDimension.ENVIRONMENT:
+					uiParent = uiEnvirontment;
+					if (type == HyTracksParametersType.INPUT)
+					{
+						dpc = dpcEnvInput;
+					}
+					else
+					{
+						dpc = dpcEnvOutput;
+					}
+					sprite = themeSettings.themeEnv.sprite;
+					break;
+				case STEEPDimension.POLITICS:
+					uiParent = uiPolitics;
+					if (type == HyTracksParametersType.INPUT)
+					{
+						dpc = dpcPolInput;
+					}
+					else
+					{
+						dpc = dpcPolOutput;
+					}
+
+					sprite = themeSettings.themePol.sprite;
+					break;
+
+			}
 		}
 
 		void InitUI() {
@@ -134,36 +221,9 @@ namespace HyTracks {
 				DynamicPanelsCanvas dpc = null;
 				RectTransform uiParent = null;
 				Sprite sprite = null;
-				switch (dim)
-				{
-					case STEEPDimension.SOCIAL:
-						uiParent = uiInputSocial;
-						dpc = dpcSoc;
-						sprite = themeSettings.themeSoc.sprite;
-						break;
-					case STEEPDimension.TECHNOLOGY:
-						uiParent = uiInputTechnology;
-						dpc = dpcTec;
-						sprite = themeSettings.themeTec.sprite;
-						break;
-					case STEEPDimension.ECONOMICS:
-						uiParent = uiInputEconomic;
-						dpc = dpcEco;
-						sprite = themeSettings.themeEco.sprite;
-						break;
-					case STEEPDimension.ENVIRONMENT:
-						uiParent = uiInputEnvirontment;
-						dpc = dpcEnv;
-						sprite = themeSettings.themeEnv.sprite;
-						break;
-					case STEEPDimension.POLITICS:
-						uiParent = uiInputPolitics;
-						dpc = dpcPol;
-						sprite = themeSettings.themePol.sprite;
-						break;
-				}
+				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
 				HyTracksParametersList paramList = GetInputParameters(dim);
-				//BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
+				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
 
 				UpdatePieMenu();

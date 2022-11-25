@@ -13,7 +13,13 @@ namespace HyTracks {
         POLITICS
 	}
 
-    [Serializable]
+	public enum HyTracksParametersType
+    {
+        INPUT,
+        OUTPUT
+    }
+
+	[Serializable]
     public struct HyTracksParametersBase {
         public string id;
         public string name;
