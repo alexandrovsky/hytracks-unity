@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DynamicPanels;
+using static TouchScript.Behaviors.Cursors.UI.GradientTexture;
+
 namespace HyTracks
 {
     public class HyTracksParametersUI : MonoBehaviour
@@ -20,24 +22,50 @@ namespace HyTracks
         [SerializeField]
         TMP_Text unitsText;
 
-        DynamicPanelsCanvas dynamicPanelsCanvas;
+        [SerializeField]
+        RectTransform inputPanel;
+
+		[SerializeField]
+		Button incrementBtn;
+		[SerializeField]
+		Button decrementBtn;
+
+		DynamicPanelsCanvas dynamicPanelsCanvas;
 
 		public HyTracksParametersBase parameters { get; private set;}
 
-        public void Init(HyTracksParametersBase parameters, DynamicPanelsCanvas dpc)
+        public void Init(HyTracksParametersBase parameters, DynamicPanelsCanvas dpc, HyTracksThemeSettings themeSettings)
 		{
             this.parameters = parameters;
             nameText.text = parameters.name;
             descriptionText.text = parameters.description;
             unitsText.text = parameters.unit;
             valueInputField.text = $"{parameters.value}";
+            valueInputField.interactable = parameters.isEditable;
             valueInputField.onValueChanged.AddListener((s) => {
 				if(float.TryParse(s,out float res)) {
                     parameters.value = res;
                 }
             });
 
-            dynamicPanelsCanvas = dpc;
+            if(parameters.minValue == parameters.maxValue)
+            {
+                parameters.maxValue = parameters.value;
+			}
+
+            incrementBtn.onClick.AddListener(() => {
+				parameters.value += themeSettings.inrementStep;                
+				valueInputField.text = $"{parameters.value}";
+			});
+
+			decrementBtn.onClick.AddListener(() => {
+				parameters.value -= themeSettings.inrementStep;
+				valueInputField.text = $"{parameters.value}";
+			});
+
+            inputPanel.gameObject.SetActive(parameters.isEditable);
+
+			dynamicPanelsCanvas = dpc;
         }
 
 

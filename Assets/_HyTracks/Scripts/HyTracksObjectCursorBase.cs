@@ -100,7 +100,7 @@ namespace HyTracks {
 				newUI.GetComponent<Image>().enabled = true;
 				newUI.GetComponent<Image>().color = themeSettings.ThemeForDimension(dimension).color;
 				HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
-				ui.Init(parametersList.parameters[i], dpc);
+				ui.Init(parametersList.parameters[i], dpc, themeSettings);
 				
 				if (panel == null)
 				{
@@ -232,8 +232,7 @@ namespace HyTracks {
 				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
 				UpdatePieMenu();
-			}
-			
+			}			
 		}
 
 		public new void Init(RectTransform parent, IPointer pointer)

@@ -23,6 +23,8 @@ namespace HyTracks
 		public Vector2 parametersUIBaseSize = new Vector2(256, 256);
 		public Vector2 parametersPanelFloatingSize = new Vector2(400, 400);
 
+		public float inrementStep = 1000;
+
 		public SteepDimensionTheme ThemeForDimension(STEEPDimension dimension)
 		{
 			switch (dimension)

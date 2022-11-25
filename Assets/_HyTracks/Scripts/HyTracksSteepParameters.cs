@@ -116,5 +116,27 @@ namespace HyTracks
 				{STEEPDimension.POLITICS, parametersPoliticsOutput},
 			};
 		}
+
+        [Multiline]
+        [SerializeField]
+        string dummJSON;
+
+        [EditorCools.Button]
+        void GenerateDummyJSON() {
+            HyTracksParametersBase p = new HyTracksParametersBase()
+            {
+                id = "test_id",
+                name = "test_name",
+                unit = "m/s^2",
+
+                description = "description text....",
+		        value = 42,
+		        isVisible = true,
+		        isEditable = true,
+				date = DateTime.Now.ToString("yyyy-MM-dd")
+			};
+			dummJSON = JsonUtility.ToJson(p);
+            Debug.Log(dummJSON);
+        }
 	}
 }
