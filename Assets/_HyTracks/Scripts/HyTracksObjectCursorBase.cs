@@ -221,10 +221,15 @@ namespace HyTracks {
 				DynamicPanelsCanvas dpc = null;
 				RectTransform uiParent = null;
 				Sprite sprite = null;
+				// Build INPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
 				HyTracksParametersList paramList = GetInputParameters(dim);
 				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
+				// Build OUTPUTS UI
+				GetComponentsForDimension(HyTracksParametersType.OUTPUT, dim, out dpc, out uiParent, out sprite);
+				paramList = GetInputParameters(dim);
+				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
 				UpdatePieMenu();
 			}
