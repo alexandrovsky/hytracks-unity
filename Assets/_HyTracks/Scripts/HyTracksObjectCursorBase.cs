@@ -48,14 +48,24 @@ namespace HyTracks {
 		{
 			foreach (var pie in transform.GetComponentsInChildren<uPIeMenu>())
 			{
+				if (pie.name.Contains("Input"))
+				{
+					var parent = pie.transform.parent.GetComponentInParent<uPIeMenu>();
+					pie.StartDegOffset = parent.StartDegOffset;
+				}else if (pie.name.Contains("Output"))
+				{
+					var parent = pie.transform.parent.GetComponentInParent<uPIeMenu>();
+					pie.StartDegOffset = parent.StartDegOffset + 32;
+				}
 				pie.Realign();
 			}
-			pieMenu.Realign();
+			//pieMenu.Realign();
+			
 
-			foreach (var btn in transform.GetComponentsInChildren<Selectable>())
-			{
-				(btn.transform as RectTransform).rotation = Quaternion.identity;
-			}
+			//foreach (var btn in transform.GetComponentsInChildren<Selectable>())
+			//{
+			//	(btn.transform as RectTransform).rotation = Quaternion.identity;
+			//}
 		}
 
 
@@ -69,12 +79,13 @@ namespace HyTracks {
 			return parameters.parametersOutput[steep];
 		}
 
-		void BuildParametersForDimension(HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
+		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
 			Panel panel = null;
 			for (int i = 0; i < parametersList.parameters.Count; i++)
 			{
 				GameObject newUI = Instantiate(parametersPefabUI, uiParent);
-
+				newUI.GetComponent<Image>().enabled = true;
+				newUI.GetComponent<Image>().color = themeSettings.ThemeForDimension(dimension).color;
 				HyTracksParametersUI ui = newUI.GetComponent<HyTracksParametersUI>();
 				ui.Init(parametersList.parameters[i], dpc);
 				
@@ -97,6 +108,7 @@ namespace HyTracks {
 			dpc.ForceRebuildLayoutImmediate();
 			
 			panel.ResizeTo(new Vector2(256, 256));
+			
 		}
 
 		
@@ -104,8 +116,6 @@ namespace HyTracks {
 		private void PanelNotificationCenter_OnStoppedDraggingTab(PanelTab tab)
 		{
 			Debug.Log($"Tab Drag Stop {tab.name} {tab.Index} {tab.Panel.name} {tab.Panel.IsDocked}");
-			
-			
 		}
 
 		private void PanelNotificationCenter_OnStartedDraggingTab(PanelTab tab)
@@ -153,10 +163,10 @@ namespace HyTracks {
 						break;
 				}
 				HyTracksParametersList paramList = GetInputParameters(dim);
-				BuildParametersForDimension(paramList, uiParent, dpc, sprite);
-				
-				
-				
+				//BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
+
+
+				UpdatePieMenu();
 			}
 			
 		}

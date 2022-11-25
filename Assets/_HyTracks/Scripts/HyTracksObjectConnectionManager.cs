@@ -35,7 +35,6 @@ namespace HyTracks
 			cursorManager.onTangibleAdded += CursorManager_onTangibleAdded;
 			cursorManager.onTangibleRemoved += CursorManager_onTangibleRemoved;
 			cursorManager.onTangibleUpdated += CursorManager_onTangibleUpdated;
-
 		}
 
 		

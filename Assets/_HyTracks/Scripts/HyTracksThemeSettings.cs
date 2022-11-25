@@ -20,7 +20,26 @@ namespace HyTracks
 		public SteepDimensionTheme themeEnv;
 		public SteepDimensionTheme themePol;
 
-
+		public Vector2 parametersUIBaseSize = new Vector2(256, 256);
 		public Vector2 parametersPanelFloatingSize = new Vector2(400, 400);
+
+		public SteepDimensionTheme ThemeForDimension(STEEPDimension dimension)
+		{
+			switch (dimension)
+			{
+				case STEEPDimension.SOCIAL:
+					return themeSoc;
+				case STEEPDimension.TECHNOLOGY:
+					return themeTec;
+				case STEEPDimension.ECONOMICS:
+					return themeEco;
+				case STEEPDimension.ENVIRONMENT:
+					return themeEnv;				
+				case STEEPDimension.POLITICS:
+					return themePol;
+				default:
+					return null;
+			}
+		}
 	}
 }

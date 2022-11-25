@@ -16,14 +16,15 @@ MonoBehaviour:
     color: {r: 0.86666673, g: 0.5176471, b: 0.32156864, a: 1}
     sprite: {fileID: 21300000, guid: db8a038e3afb049dd92ebb325637035c, type: 3}
   themeTec:
-    color: {r: 0.29803923, g: 0.44705886, b: 0.6901961, a: 0}
+    color: {r: 0.29803923, g: 0.44705886, b: 0.6901961, a: 1}
     sprite: {fileID: 21300000, guid: 66ce549a704424153af15cfe8fea513b, type: 3}
   themeEco:
-    color: {r: 0.7686275, g: 0.30980393, b: 0.31764707, a: 0}
+    color: {r: 0.7686275, g: 0.30980393, b: 0.31764707, a: 1}
     sprite: {fileID: 21300000, guid: 2de52c1f107fc4a3cbb0cb878fba68d1, type: 3}
   themeEnv:
-    color: {r: 0.33333334, g: 0.65882355, b: 0.40784317, a: 0}
+    color: {r: 0.33333334, g: 0.65882355, b: 0.40784317, a: 1}
     sprite: {fileID: 21300000, guid: 227e06778585941b38863b833922124b, type: 3}
   themePol:
-    color: {r: 0.5058824, g: 0.44705886, b: 0.7019608, a: 0}
+    color: {r: 0.5058824, g: 0.44705886, b: 0.7019608, a: 1}
     sprite: {fileID: 21300000, guid: 5db745443f7fd4c62b7ac5ae5eb64fc9, type: 3}
+  parametersPanelFloatingSize: {x: 400, y: 400}
