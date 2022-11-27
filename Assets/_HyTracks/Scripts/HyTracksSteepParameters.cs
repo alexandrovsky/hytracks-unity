@@ -89,11 +89,26 @@ namespace HyTracks
 		{
             if(type == HyTracksParametersType.INPUT)
             {
-				return parametersInput[steep];
-            }
+                if (parametersInput.ContainsKey(steep))
+                {
+					return parametersInput[steep];
+				}
+				else
+				{
+					return null;
+				}
+			}
             else
             {
-				return parametersOutput[steep];
+				if (parametersOutput.ContainsKey(steep))
+                {
+					return parametersOutput[steep];
+                }
+                else
+                {
+                    return null;
+                }
+					
 			}
 		}
 

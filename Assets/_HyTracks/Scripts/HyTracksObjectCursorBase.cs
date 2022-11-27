@@ -121,9 +121,6 @@ namespace HyTracks {
 				{
 					parameterOutputUIs.Add(parametersList.parameters[i].id, ui);
 				}
-
-				
-
 			}
 			dpc.ForceRebuildLayoutImmediate();
 			
