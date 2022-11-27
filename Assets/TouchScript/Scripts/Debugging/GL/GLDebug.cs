@@ -9,7 +9,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-#if UNITY_EDITOR 
+using UnityEditor.Build.Reporting;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Build;
 #endif
@@ -628,7 +629,7 @@ namespace TouchScript.Debugging.GL
     }
 
 #if UNITY_EDITOR
-    internal class BuildProcessor : IPreprocessBuild, IPostprocessBuild
+    internal class BuildProcessor : IPreprocessBuildWithReport, IPostprocessBuildWithReport
     {
         public int callbackOrder
         {
@@ -664,7 +665,17 @@ namespace TouchScript.Debugging.GL
             prop.InsertArrayElementAtIndex(index);
             prop.GetArrayElementAtIndex(index).objectReferenceValue = Shader.Find(shaderName);
         }
-    }
+
+		public void OnPreprocessBuild(BuildReport report)
+		{
+            Debug.Log(report);
+		}
+
+		public void OnPostprocessBuild(BuildReport report)
+		{
+			Debug.Log(report);
+		}
+	}
 #endif
 }
 

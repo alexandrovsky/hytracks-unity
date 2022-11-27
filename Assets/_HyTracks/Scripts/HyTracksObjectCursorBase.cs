@@ -55,6 +55,9 @@ namespace HyTracks {
 		[SerializeField]
 		DynamicPanelsCanvas dpcPolOutput;
 
+		Dictionary<string, HyTracksParametersUI> parameterInputUIs;
+		Dictionary<string, HyTracksParametersUI> parameterOutputUIs;
+
 
 		[EditorCools.Button]
 		void UpdatePieMenu()
@@ -84,7 +87,7 @@ namespace HyTracks {
 
 		
 
-		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
+		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersType parametersType, HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
 			Panel panel = null;
 			for (int i = 0; i < parametersList.parameters.Count; i++)
 			{
@@ -109,6 +112,18 @@ namespace HyTracks {
 					tab.Label = ui.parameters.name;
 					tab.Icon = sprite;
 				}
+
+				if(parametersType == HyTracksParametersType.INPUT)
+				{
+					parameterInputUIs.Add(parametersList.parameters[i].id, ui);
+				}
+				else
+				{
+					parameterOutputUIs.Add(parametersList.parameters[i].id, ui);
+				}
+
+				
+
 			}
 			dpc.ForceRebuildLayoutImmediate();
 			
@@ -213,6 +228,9 @@ namespace HyTracks {
 
 		void InitUI() {
 
+			parameterInputUIs = new Dictionary<string, HyTracksParametersUI>();
+			parameterOutputUIs = new Dictionary<string, HyTracksParametersUI>();
+
 			PanelNotificationCenter.OnStartedDraggingTab += PanelNotificationCenter_OnStartedDraggingTab;
 			PanelNotificationCenter.OnStoppedDraggingTab += PanelNotificationCenter_OnStoppedDraggingTab;
 
@@ -226,12 +244,12 @@ namespace HyTracks {
 				// Build INPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
 				HyTracksParametersList paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
-				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
+				BuildParametersForDimension(dim, HyTracksParametersType.INPUT, paramList, uiParent, dpc, sprite);
 
 				// Build OUTPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.OUTPUT, dim, out dpc, out uiParent, out sprite);
 				paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.OUTPUT);
-				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
+				BuildParametersForDimension(dim, HyTracksParametersType.OUTPUT, paramList, uiParent, dpc, sprite);
 
 				UpdatePieMenu();
 			}			
@@ -251,6 +269,32 @@ namespace HyTracks {
 			parameters[paramsIdx].LoadDataFromJSONFiles();
 			InitUI();
 		}
+
+		private void Update()
+		{
+			int paramsIdx = CurrentSimulationParametersIndex();
+			
+			foreach (STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension)))
+			{
+				DynamicPanelsCanvas dpc = null;
+				RectTransform uiParent = null;
+				Sprite sprite = null;
+				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
+				HyTracksParametersList paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
+				foreach (HyTracksParametersBase p in paramList.parameters)
+				{
+					parameterInputUIs[p.id].SetParameterValues(p);
+				}
+
+				GetComponentsForDimension(HyTracksParametersType.OUTPUT, dim, out dpc, out uiParent, out sprite);
+				paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.OUTPUT);
+				foreach (HyTracksParametersBase p in paramList.parameters)
+				{
+					parameterOutputUIs[p.id].SetParameterValues(p);
+				}
+			}
+		}
+
 
 	}
 

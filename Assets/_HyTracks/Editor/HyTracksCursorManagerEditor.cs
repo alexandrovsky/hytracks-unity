@@ -55,7 +55,7 @@ namespace HyTracks.Editor {
         {
             base.OnInspectorGUI();
 			var display = GUIElements.Header(TEXT_TANGIBLES, cursorsProps);
-			if (display)
+			if (display && mgr.tangibles != null)
 			{
 				EditorGUI.indentLevel++;
 				foreach(var pair in mgr.tangibles)

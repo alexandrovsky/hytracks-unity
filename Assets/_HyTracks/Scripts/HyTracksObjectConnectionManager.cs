@@ -40,8 +40,8 @@ namespace HyTracks
 		
 		private void CursorManager_onTangibleAdded(HyTracksObjectCursorBase obj)
 		{
-			Debug.Log(obj);
-			Debug.Log("CursorManager_onTangibleAdded");
+			//Debug.Log(obj);
+			//Debug.Log("CursorManager_onTangibleAdded");
 
 			List<HyTracksObjectConnectionData> conns = connections.connections.Where(x => x.inputObjectID == obj.objectId || x.outputObjectID == obj.objectId).ToList();
 
@@ -117,8 +117,9 @@ namespace HyTracks
 			//connection.connector.enabled = false;
 		}
 
-		private void Awake()
+		private new void Awake()
 		{
+			base.Awake();
 			connectionPool = new ObjectPool<HyTracksObjectConnection>(10, instantiateConnectionProxy, getConnectionProxy, clearProxy);
 			openConnections = new List<HyTracksObjectConnection>();
 		}

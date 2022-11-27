@@ -19,7 +19,7 @@ namespace HyTracks
         // Update is called once per frame
         void Update()
         {
-            foreach(HyTracksObjectCursorBase tangible in HyTracksCursorManager.instance.tangibles.Values)
+            foreach (HyTracksObjectCursorBase tangible in HyTracksCursorManager.instance.tangibles.Values)
             {
 
             }

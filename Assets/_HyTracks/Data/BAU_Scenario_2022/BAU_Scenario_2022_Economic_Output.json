@@ -71,7 +71,9 @@
             "name": "Emissions in Co2 t per year ETS discharge",
             "units": "t / 1000 MWh",
             "description": "420 g Co2 per kWh (1000 MWh) * 0,3 * 73,63 (ETS price 2022) = 9277 Euro",
-            "value": 9277
+            "value": 9277,
+            "isVisible": false,
+            "isEditable": false
         }
     ]
 }

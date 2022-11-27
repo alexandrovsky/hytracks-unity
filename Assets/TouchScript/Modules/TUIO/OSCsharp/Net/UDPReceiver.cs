@@ -157,10 +157,11 @@ namespace OSCsharp.Net
                 {
                     udpClient.BeginReceive(callback, udpState);
                 }
-            } catch (ObjectDisposedException)
+            } catch (ObjectDisposedException e)
             {
                 // Suppress error
-                var a = 2;
+                //Debug.LogError(e);
+                //var a = 2;
             }
         }
 

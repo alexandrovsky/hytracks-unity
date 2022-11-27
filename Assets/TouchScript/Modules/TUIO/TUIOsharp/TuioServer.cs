@@ -90,8 +90,7 @@ namespace TUIOsharp
                 data += message.Data[i].ToString();
 
             }
-            Debug.Log($"{message.Address} {data}");
-            
+            //Debug.Log($"{message.Address} {data}");            
 
             if (message.Data.Count == 0) return;
             

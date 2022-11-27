@@ -152,8 +152,9 @@ namespace HyTracks {
 
 		#region Unity methods
 
-		private void Awake()
+		private new void Awake()
 		{
+			base.Awake();
 			cursors = new Dictionary<int, PointerCursor>(10);
 			tangibles = new Dictionary<int, HyTracksObjectCursorBase>(10);
 			cursorSampler = CustomSampler.Create("[TouchScript] Update Cursors");
