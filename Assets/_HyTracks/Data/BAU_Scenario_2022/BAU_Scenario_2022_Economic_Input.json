@@ -3,7 +3,7 @@
     "parameters": [
         {
             "id": "eco_0",
-            "name": "sells O&M for AMB",
+            "name": "trades O&M for AMB",
             "units": "",
             "description": "",
             "value": 0,
@@ -11,14 +11,14 @@
         },
         {
             "id": "eco_1",
-            "name": "sells power to AMB",
+            "name": "trades power to AMB",
             "units": "",
             "description": "",
             "value": 0
         },
         {
             "id": "eco_2",
-            "name": "sells gas to AMB",
+            "name": "trades gas to AMB",
             "units": "",
             "description": "",
             "value": 0

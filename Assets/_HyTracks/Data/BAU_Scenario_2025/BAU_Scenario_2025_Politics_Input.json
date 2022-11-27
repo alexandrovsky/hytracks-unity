@@ -1,0 +1,18 @@
+{
+    "parameters": [
+        {
+            "id": "pol_0",
+            "name": "Regulatory measures",
+            "units": "",
+            "description": "Import ban on coal from August 2022",
+            "value": 0
+        },
+        {
+            "id": "pol_1",
+            "name": "Allowances",
+            "units": "",
+            "description": "",
+            "value": 0
+        }
+    ]
+}

@@ -3,36 +3,36 @@
         {
             "id": "tec_0",
             "name": "Power",
-            "units": "MW",
+            "units": "MW/year",
             "description": "",
-            "value": 444.50,
+            "value": 1000,
             "isVisible": true,
             "isEditable": false
         },
         {
             "id": "tec_1",
             "name": "Efficiency",
-            "units": "T",
+            "units": "%",
             "description": "",
-            "value": 0.58,
+            "value": 40,
             "isVisible": true,
             "isEditable": false
         },
         {
             "id": "tec_2",
-            "name": "Carbon Emission",
-            "units": "T",
+            "name": "Emissions",
+            "units": " in Co2 T/year",
             "description": "",
-            "value": 457000,
+            "value": 420,
             "isVisible": true,
             "isEditable": false
         },
         {
             "id": "tec_3",
-            "name": "Revenue",
-            "units": "1000 EUR",
+            "name": "Costs",
+            "units": "EUR/year MWh",
             "description": "",
-            "value": 80769,
+            "value": 250000,
             "isVisible": true,
             "isEditable": false
         }

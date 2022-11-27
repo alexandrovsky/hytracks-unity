@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Security.Cryptography;
 
 namespace HyTracks
 {
@@ -55,15 +56,55 @@ namespace HyTracks
 		private void OnEnable()
         {
 			LoadDataFromJSONFiles();
-            GenerateDicts();
         }
 
+		public HyTracksParametersList GetParameters(string dimension, HyTracksParametersType type)
+        {
+            STEEPDimension steep = STEEPDimension.SOCIAL;
+			if (dimension.ToLower().Contains("soc"))
+            {
+                steep = STEEPDimension.SOCIAL;
+			}
+            else if (dimension.ToLower().Contains("tec"))
+			{
+				steep = STEEPDimension.TECHNOLOGY;
+			}
+            else if (dimension.ToLower().Contains("eco"))
+			{
+				steep = STEEPDimension.ECONOMICS;
+			}
+			else if (dimension.ToLower().Contains("env"))
+			{
+				steep = STEEPDimension.ENVIRONMENT;
+			}
+			else if (dimension.ToLower().Contains("pol"))
+			{
+				steep = STEEPDimension.POLITICS;
+			}
 
-        [EditorCools.Button]
+            return GetParameters(steep, type);
+		}
+
+		public HyTracksParametersList GetParameters(STEEPDimension steep, HyTracksParametersType type)
+		{
+            if(type == HyTracksParametersType.INPUT)
+            {
+				return parametersInput[steep];
+            }
+            else
+            {
+				return parametersOutput[steep];
+			}
+		}
+
+		
+
+
+		[EditorCools.Button]
 		public override void LoadDataFromJSONFiles()
         {
-            // INPUTS
-            if(parametersSocialInputJSON != null) {
+			// INPUTS
+			if (parametersSocialInputJSON != null) {
                 parametersSocialInput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialInputJSON.text);
             }
             if(parametersTechnologyInputJSON != null) {
@@ -80,24 +121,30 @@ namespace HyTracks
             }
 
             // OUTPUTS
-            if(parametersSocialOutputJSON != null) {
+            if (parametersSocialOutputJSON != null)
+            {
                 parametersSocialOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialOutputJSON.text);
             }
-            if(parametersTechnologyOutputJSON != null) {
+            if (parametersTechnologyOutputJSON != null)
+            {
                 parametersTechnologyOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersTechnologyOutputJSON.text);
             }
-            if(parametersEconomicsOutputJSON != null) {
+            if (parametersEconomicsOutputJSON != null)
+            {
                 parametersEconomicsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEconomicsOutputJSON.text);
             }
-            if(parametersEnvironmentOutputJSON != null) {
+            if (parametersEnvironmentOutputJSON != null)
+            {
                 parametersEnvironmentOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEnvironmentOutputJSON.text);
             }
-            if(parametersPoliticsOutputJSON != null) {
+            if (parametersPoliticsOutputJSON != null)
+            {
                 parametersPoliticsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsOutputJSON.text);
             }
+
+			GenerateDicts();
 		}
 
-		[EditorCools.Button]
 		void GenerateDicts()
 		{
 			parametersInput = new Dictionary<STEEPDimension, HyTracksParametersList>() {
@@ -119,24 +166,55 @@ namespace HyTracks
 
         [Multiline]
         [SerializeField]
-        string dummJSON;
+        string dummyJSON;
 
         [EditorCools.Button]
-        void GenerateDummyJSON() {
+        void GenerateDummyJSONParamters() {
             HyTracksParametersBase p = new HyTracksParametersBase()
             {
                 id = "test_id",
                 name = "test_name",
                 unit = "m/s^2",
-
                 description = "description text....",
 		        value = 42,
 		        isVisible = true,
 		        isEditable = true,
 				date = DateTime.Now.ToString("yyyy-MM-dd")
 			};
-			dummJSON = JsonUtility.ToJson(p);
-            Debug.Log(dummJSON);
+			dummyJSON = JsonUtility.ToJson(p);
+            Debug.Log(dummyJSON);
         }
+
+		[EditorCools.Button]
+		void GenerateDummyJSONParamtersList()
+		{
+            HyTracksParametersList pList = new HyTracksParametersList();
+            pList.parameters = new List<HyTracksParametersBase>()
+            {
+                new HyTracksParametersBase() {
+                    id = "test_id_0",
+                    name = "test_name",
+                    value = 0.0f,
+                    unit = "m/s^2",
+                    date = DateTime.Now.ToString("yyyy-MM-dd")
+                },
+				new HyTracksParametersBase() {
+				    id = "test_id_1",
+				    name = "test_name",
+				    value = 1.0f,
+				    unit = "mW",
+				    date = DateTime.Now.ToString("yyyy-MM-dd")
+			    }
+			};
+
+			
+
+			pList.parameters.Add(new HyTracksParametersBase()
+			);
+
+			dummyJSON = JsonUtility.ToJson(pList);
+			Debug.Log(dummyJSON);
+		}
+
 	}
 }

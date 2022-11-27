@@ -40,11 +40,11 @@ namespace HyTracks {
     public class HyTracksParametersList {
         public List<HyTracksParametersBase> parameters;
 
-        public HyTracksParametersBase GetParameters(string id)
-        {
-            return parameters.Where(x => x.id == id).FirstOrDefault();
+  //      public HyTracksParametersBase GetParameters(string id)
+  //      {
+  //          return parameters.Where(x => x.id == id).FirstOrDefault();
 
-		}
+		//}
         
     }
 

@@ -7,8 +7,8 @@ using TouchScript.Behaviors.Cursors;
 using System;
 namespace HyTracks
 {
-    public class HyTracksObjectConnectionManager : MonoBehaviour
-    {
+    public class HyTracksObjectConnectionManager : SingletonBehaviour<HyTracksObjectConnectionManager>
+	{
         public HyTracksCursorManager cursorManager;
 
 		public HyTracksSteepConnections steepConnections;

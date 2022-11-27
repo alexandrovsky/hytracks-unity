@@ -1,0 +1,86 @@
+{        
+    "parameters" : [
+        {
+            "id": "eco_0",
+            "name": "Operations & Maintenance contract SWB AMB",
+            "units": "EUR / (MWe* a)",
+            "description": "",
+            "value": 3,
+            "minValue": 0.0,
+            "maxValue": 0.0,
+            "date": "2025-01-01",
+            "isVisible": false,
+            "isEditable": false
+        },
+        {
+            "id": "eco_1",
+            "name": "Power Purchase Agreement SWB AMB",
+            "units": "EUR/kWh",
+            "description": "",
+            "value": 0.22,
+            "date": "2025-01-01",
+            "isVisible": false,
+            "isEditable": false
+        },
+        {
+            "id": "eco_2",
+            "name": "Natural Gas Purchase Agreement SWB AMB",
+            "units": "EUR/MWh",
+            "description": "",
+            "value": 206.70,
+            "date": "2025-01-01",
+            "isVisible": false,
+            "isEditable": false
+        },
+        {
+            "id": "eco_3",
+            "name": "ETS price scenario",
+            "units": "EUR/t",
+            "description": "",
+            "value": 85.45,
+            "date": "2025-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "eco_4",
+            "name": "Profit",
+            "units": "m EUR",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 102,
+            "date": "2025-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "eco_5",
+            "name": "Revenue",
+            "units": "m EUR",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 50,
+            "date": "2025-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "eco_6",
+            "name": "Emission",
+            "units": "t",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 420,
+            "date": "2025-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "eco_7",
+            "name": "Emissions in Co2 t per year ETS discharge",
+            "units": "t / 1000 MWh",
+            "description": "420 g Co2 per kWh (1000 MWh) * 1.0 * 99.63 (ETS price 2030) = 41844,6 Euro",
+            "value": 41844.6,
+            "date": "2025-01-01",
+            "isVisible": false,
+            "isEditable": false
+        }
+    ]
+}

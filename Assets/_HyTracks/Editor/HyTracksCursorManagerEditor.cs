@@ -16,8 +16,9 @@ namespace HyTracks.Editor {
         public static readonly GUIContent TEXT_CURSORS_HEADER = new GUIContent("Cursors","Cursor prefabs used for different pointer types.");
         public static readonly GUIContent TEXT_POINTER_SIZE = new GUIContent("Pointer size (cm)","Pointer size in cm based on current DPI.");
         public static readonly GUIContent TEXT_POINTER_PIXEL_SIZE = new GUIContent("Pointer size (px)","Pointer size in pixels.");
+		public static readonly GUIContent TEXT_TANGIBLES = new GUIContent("Tangibles", "Currently instatiated tangibles");
 
-        public static readonly GUIContent MODEL_OBJECT_CURSORS_HEADER = new GUIContent("Model Objects","Tangibles that represent the model assumptions.");
+		public static readonly GUIContent MODEL_OBJECT_CURSORS_HEADER = new GUIContent("Model Objects","Tangibles that represent the model assumptions.");
         public static readonly GUIContent AGENT_OBJECT_CURSORS_HEADER = new GUIContent("Agent Objects","Tangibles that represent the agents.");
         public static readonly GUIContent CURSOR_EVENTS_HEADER = new GUIContent("Tangible Events", "Events");
 
@@ -25,10 +26,12 @@ namespace HyTracks.Editor {
         private SerializedProperty useDPI, cursorSize, cursorPixelSize;
         private SerializedProperty cursorsProps;
         private SerializedProperty eventTangibleAdd, eventTangibleRemove, eventTangibleUpdate;
-
+		HyTracksCursorManager mgr;
 		private void OnEnable()
         {
-            mousePointerProxy = serializedObject.FindProperty("mouseCursor");
+			mgr = serializedObject.targetObject as HyTracksCursorManager;
+
+			mousePointerProxy = serializedObject.FindProperty("mouseCursor");
             touchPointerProxy = serializedObject.FindProperty("touchCursor");
             penPointerProxy = serializedObject.FindProperty("penCursor");
             objectPointerProxy = serializedObject.FindProperty("objectCursor");
@@ -51,45 +54,59 @@ namespace HyTracks.Editor {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-
+			var display = GUIElements.Header(TEXT_TANGIBLES, cursorsProps);
+			if (display)
+			{
+				EditorGUI.indentLevel++;
+				foreach(var pair in mgr.tangibles)
+				{
+					GUILayout.BeginHorizontal();
+					GUILayout.Label(pair.Key.ToString());
+					GUILayout.Label(pair.Value.name);
+					GUILayout.EndHorizontal();
+				}
+				EditorGUI.indentLevel--;
+			}
+				
+			
    //         serializedObject.Update();
 
-   //         GUILayout.Space(5);
+			//         GUILayout.Space(5);
 
-   //         EditorGUILayout.PropertyField(useDPI,TEXT_DPI_HEADER);
-   //         if(useDPI.boolValue) {
-   //             EditorGUILayout.PropertyField(cursorSize,TEXT_POINTER_SIZE);
-   //         } else {
-   //             EditorGUILayout.PropertyField(cursorPixelSize,TEXT_POINTER_PIXEL_SIZE);
-   //         }
+			//         EditorGUILayout.PropertyField(useDPI,TEXT_DPI_HEADER);
+			//         if(useDPI.boolValue) {
+			//             EditorGUILayout.PropertyField(cursorSize,TEXT_POINTER_SIZE);
+			//         } else {
+			//             EditorGUILayout.PropertyField(cursorPixelSize,TEXT_POINTER_PIXEL_SIZE);
+			//         }
 
-   //         var display = GUIElements.Header(TEXT_CURSORS_HEADER,cursorsProps);
-   //         if(display) {
-   //             EditorGUI.indentLevel++;                
-   //             EditorGUILayout.PropertyField(mousePointerProxy,new GUIContent("Mouse Pointer Proxy"));
-   //             EditorGUILayout.PropertyField(touchPointerProxy,new GUIContent("Touch Pointer Proxy"));
-   //             EditorGUILayout.PropertyField(penPointerProxy,new GUIContent("Pen Pointer Proxy"));
-   //             EditorGUILayout.PropertyField(objectPointerProxy,new GUIContent("Object Pointer Proxy"));
-   //             EditorGUI.indentLevel--;
-   //         }
+			//         var display = GUIElements.Header(TEXT_CURSORS_HEADER,cursorsProps);
+			//         if(display) {
+			//             EditorGUI.indentLevel++;                
+			//             EditorGUILayout.PropertyField(mousePointerProxy,new GUIContent("Mouse Pointer Proxy"));
+			//             EditorGUILayout.PropertyField(touchPointerProxy,new GUIContent("Touch Pointer Proxy"));
+			//             EditorGUILayout.PropertyField(penPointerProxy,new GUIContent("Pen Pointer Proxy"));
+			//             EditorGUILayout.PropertyField(objectPointerProxy,new GUIContent("Object Pointer Proxy"));
+			//             EditorGUI.indentLevel--;
+			//         }
 
-   //         display = GUIElements.Header(MODEL_OBJECT_CURSORS_HEADER,cursorsProps);
+			//         display = GUIElements.Header(MODEL_OBJECT_CURSORS_HEADER,cursorsProps);
 			//if(display) {
-   //             EditorGUI.indentLevel++;
-   //             EditorGUILayout.PropertyField(modelObjectProxies,new GUIContent("Model Objects Proxy"));                
-   //             EditorGUI.indentLevel--;
-   //         }
+			//             EditorGUI.indentLevel++;
+			//             EditorGUILayout.PropertyField(modelObjectProxies,new GUIContent("Model Objects Proxy"));                
+			//             EditorGUI.indentLevel--;
+			//         }
 
-   //         display = GUIElements.Header(AGENT_OBJECT_CURSORS_HEADER,cursorsProps);
-   //         if(display) {
-   //             EditorGUI.indentLevel++;
-   //             EditorGUILayout.PropertyField(agentObjectProxies,new GUIContent("Agent Objects Proxy"));
-   //             EditorGUI.indentLevel--;
-   //         }
+			//         display = GUIElements.Header(AGENT_OBJECT_CURSORS_HEADER,cursorsProps);
+			//         if(display) {
+			//             EditorGUI.indentLevel++;
+			//             EditorGUILayout.PropertyField(agentObjectProxies,new GUIContent("Agent Objects Proxy"));
+			//             EditorGUI.indentLevel--;
+			//         }
 
-   //         display = GUIElements.Header(CURSOR_EVENTS_HEADER, cursorsProps);
-   //         if (display)
-   //         {
+			//         display = GUIElements.Header(CURSOR_EVENTS_HEADER, cursorsProps);
+			//         if (display)
+			//         {
 			//	EditorGUI.indentLevel++;
 			//	EditorGUILayout.PropertyField(eventTangibleAdd, new GUIContent("On Tangible Added Event"));
 			//	EditorGUILayout.PropertyField(eventTangibleRemove, new GUIContent("On Tangible Removed Event"));
@@ -97,7 +114,7 @@ namespace HyTracks.Editor {
 			//	EditorGUI.indentLevel--;
 			//}
 
-   //         serializedObject.ApplyModifiedProperties();
-        }
+			//         serializedObject.ApplyModifiedProperties();
+		}
     }
 }

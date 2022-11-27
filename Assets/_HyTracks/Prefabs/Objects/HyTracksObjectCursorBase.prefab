@@ -176,7 +176,10 @@ MonoBehaviour:
   ShowSize: 1
   ShowAngle: 1
   objectId: 0
-  parameters: {fileID: 11400000, guid: 416ee7db3a5e04a47ab8a17790d8dd69, type: 2}
+  parameters:
+  - {fileID: 11400000, guid: 416ee7db3a5e04a47ab8a17790d8dd69, type: 2}
+  - {fileID: 11400000, guid: 068c5c0d02af249e2af4913c8e3d60e3, type: 2}
+  - {fileID: 11400000, guid: 73b9e4f96140c4d46b0787a33b04cda2, type: 2}
   parametersPefabUI: {fileID: 7987517299045048881, guid: f63d461775b2744a18a1d4baa6bd9273, type: 3}
   themeSettings: {fileID: 11400000, guid: 9fb3138e3db364a5b8de471d0c349dc7, type: 2}
   pieMenu: {fileID: 229446377}

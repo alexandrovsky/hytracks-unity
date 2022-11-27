@@ -7,7 +7,7 @@ using UnityEngine.Profiling;
 using TouchScript.Behaviors.Cursors;
 using TouchScript;
 using System;
-
+using UnityEngine.Experimental.Rendering;
 
 namespace HyTracks {
 
@@ -19,7 +19,7 @@ namespace HyTracks {
 		public T cursor;
 	}
 
-	public class HyTracksCursorManager:MonoBehaviour {
+	public class HyTracksCursorManager:SingletonBehaviour<HyTracksCursorManager> {
 
 		#region Public properties
 
@@ -144,7 +144,7 @@ namespace HyTracks {
 		
 
 		public Dictionary<int, PointerCursor> cursors { get; private set; }
-		public Dictionary<int, PointerCursor> tangibles { get; private set; }
+		public Dictionary<int, HyTracksObjectCursorBase> tangibles { get; private set; }
 
 		private CustomSampler cursorSampler;
 
@@ -155,7 +155,7 @@ namespace HyTracks {
 		private void Awake()
 		{
 			cursors = new Dictionary<int, PointerCursor>(10);
-			tangibles = new Dictionary<int, PointerCursor>(10);
+			tangibles = new Dictionary<int, HyTracksObjectCursorBase>(10);
 			cursorSampler = CustomSampler.Create("[TouchScript] Update Cursors");
 
 			cursorSampler.Begin();
@@ -290,15 +290,16 @@ namespace HyTracks {
 							cursor = objectPool.Get();
 						}
 
-						(cursor as HyTracksObjectCursorBase).objectId = objectId;
+						HyTracksObjectCursorBase tangible =(cursor as HyTracksObjectCursorBase);
+						tangible.objectId = objectId;
 
 						if (tangibles.ContainsKey(objectId))
 						{
-							tangibles[objectId] = cursor;
+							tangibles[objectId] = tangible;
 						}
 						else
 						{
-							tangibles.Add(objectId, cursor);
+							tangibles.Add(objectId, tangible);
 						}
 
 						onTangibleAdded.Invoke(cursor as HyTracksObjectCursorBase);

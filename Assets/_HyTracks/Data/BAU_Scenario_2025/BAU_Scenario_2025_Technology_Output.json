@@ -1,0 +1,52 @@
+{
+    "parameters": [
+        {
+            "id": "tec_0",
+            "name": "Power",
+            "units": "MW/year",
+            "description": "",
+            "value": 1000,
+            "minValue": 0.0,
+            "maxValue": 0.0,
+            "date": "2022-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_1",
+            "name": "Efficiency",
+            "units": "%",
+            "description": "",
+            "value": 40,
+            "minValue": 0.0,
+            "maxValue": 0.0,
+            "date": "2022-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_2",
+            "name": "Emissions",
+            "units": " in Co2 T/year",
+            "description": "",
+            "value": 420,
+            "minValue": 0.0,
+            "maxValue": 0.0,
+            "date": "2022-01-01",
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_3",
+            "name": "Costs",
+            "units": "EUR/year MWh",
+            "description": "",
+            "value": 500000,
+            "minValue": 0.0,
+            "maxValue": 0.0,
+            "date": "2022-01-01",
+            "isVisible": true,
+            "isEditable": false
+        }
+    ]
+}

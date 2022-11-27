@@ -1,0 +1,40 @@
+{        
+    "parameters" : [
+        {
+            "id": "tec_0",
+            "name": "Power",
+            "units": "MW/year",
+            "description": "",
+            "value": 1000,
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_1",
+            "name": "Efficiency",
+            "units": "%",
+            "description": "",
+            "value": 40,
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_2",
+            "name": "Emissions",
+            "units": " in Co2 T/year",
+            "description": "",
+            "value": 420,
+            "isVisible": true,
+            "isEditable": false
+        },
+        {
+            "id": "tec_3",
+            "name": "Costs",
+            "units": "EUR/year MWh",
+            "description": "",
+            "value": 750000,
+            "isVisible": true,
+            "isEditable": false
+        }
+    ]
+}

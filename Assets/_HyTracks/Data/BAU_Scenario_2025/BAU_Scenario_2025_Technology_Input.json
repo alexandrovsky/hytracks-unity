@@ -1,0 +1,14 @@
+{        
+    "parameters" : [
+        {
+            "id": "tec_0",
+            "name": "Natural gas plant",
+            "units": "hwH",
+            "description": "",
+            "value": 0,
+            "isVisible": true,
+            "isEditable": false
+
+        }
+    ]
+}

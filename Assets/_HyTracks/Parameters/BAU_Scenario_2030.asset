@@ -1,0 +1,318 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0cf4bacd4594e7185ac9de9b5547dc, type: 3}
+  m_Name: BAU_Scenario_2030
+  m_EditorClassIdentifier: 
+  title: Bau Scenario 2030
+  parametersSocialInputJSON: {fileID: 4900000, guid: 581c975a4085645e98bbf683304b45cd, type: 3}
+  parametersTechnologyInputJSON: {fileID: 4900000, guid: 4a99bec10f4474a2d81c08c5f5c5afdc, type: 3}
+  parametersEconomicsInputJSON: {fileID: 4900000, guid: 3d4495abb26b7441f882d1d4e041d998, type: 3}
+  parametersEnvironmentInputJSON: {fileID: 4900000, guid: e70aabb963fca43ed9231420e8769ab9, type: 3}
+  parametersPoliticsInputJSON: {fileID: 4900000, guid: c56c0ecbc5606475f85de59383b894bf, type: 3}
+  parametersSocialOutputJSON: {fileID: 4900000, guid: 045dcdbf837a74b7da9267d2ea4494c9, type: 3}
+  parametersTechnologyOutputJSON: {fileID: 4900000, guid: ddca5d0ca4fc9407f8ea28b37aa93aa4, type: 3}
+  parametersEconomicsOutputJSON: {fileID: 4900000, guid: 222b1c63918864cc19be9e1fa518d49a, type: 3}
+  parametersEnvironmentOutputJSON: {fileID: 4900000, guid: b3c7b35c8234647cf97e9c66d4775241, type: 3}
+  parametersPoliticsOutputJSON: {fileID: 4900000, guid: 5c5b46bd879524e9ab5c45e896eafecb, type: 3}
+  parametersSocialInput:
+    parameters:
+    - id: soc_0
+      name: 
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+  parametersSocialOutput:
+    parameters:
+    - id: soc_0
+      name: test
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+  parametersTechnologyInput:
+    parameters:
+    - id: tec_0
+      name: Natural gas plant
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+  parametersTechnologyOutput:
+    parameters:
+    - id: tec_0
+      name: Power
+      unit: 
+      description: 
+      value: 1000
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: tec_1
+      name: Efficiency
+      unit: 
+      description: 
+      value: 40
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: tec_2
+      name: Emissions
+      unit: 
+      description: 
+      value: 420
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: tec_3
+      name: Costs
+      unit: 
+      description: 
+      value: 750000
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+  parametersEconomicsInput:
+    parameters:
+    - id: eco_0
+      name: sells O&M for AMB
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_1
+      name: sells power to AMB
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_2
+      name: sells gas to AMB
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_3
+      name: ETS price in Euro
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_4
+      name: Coal price in Euro
+      unit: 
+      description: Commodity price
+      value: 320
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_5
+      name: Natural gas price
+      unit: 
+      description: 
+      value: 170
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+  parametersEconomicsOutput:
+    parameters:
+    - id: eco_0
+      name: Operations & Maintenance contract SWB AMB
+      unit: 
+      description: 
+      value: 3
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_1
+      name: Power Purchase Agreement SWB AMB
+      unit: 
+      description: 
+      value: 0.22
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_2
+      name: Natural Gas Purchase Agreement SWB AMB
+      unit: 
+      description: 
+      value: 206.7
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: eco_3
+      name: ETS price scenario
+      unit: 
+      description: 
+      value: 99.63
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_4
+      name: Profit
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 102
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_5
+      name: Revenue
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 40
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_6
+      name: Emission
+      unit: 
+      description: difference between each goal and simulation result for SWB 2022
+      value: 420
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: eco_7
+      name: Emissions in Co2 t per year ETS discharge
+      unit: 
+      description: 420 g Co2 per kWh (1000 MWh) * 0,3 * 73,63 (ETS price 2022) =
+        9277 Euro
+      value: 9277
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+  parametersEnvironmentInput:
+    parameters:
+    - id: env_0
+      name: 
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+  parametersEnvironmentOutput:
+    parameters:
+    - id: env_0
+      name: 
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+  parametersPoliticsInput:
+    parameters:
+    - id: pol_0
+      name: Regulatory measures
+      unit: 
+      description: Import ban on coal from August 2022
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+    - id: pol_1
+      name: Allowances
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 0
+      isEditable: 0
+      date: 
+  parametersPoliticsOutput:
+    parameters:
+    - id: pol_0
+      name: Operating time
+      unit: 
+      description: 
+      value: 3408
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+    - id: pol_1
+      name: Share of free allowances
+      unit: 
+      description: 
+      value: 0
+      minValue: 0
+      maxValue: 0
+      isVisible: 1
+      isEditable: 0
+      date: 
+  dummyJSON: '{"id":"test_id","name":"test_name","unit":"m/s^2","description":"description
+    text....","value":42.0,"minValue":0.0,"maxValue":0.0,"isVisible":true,"isEditable":true,"date":"2022-11-27"}'

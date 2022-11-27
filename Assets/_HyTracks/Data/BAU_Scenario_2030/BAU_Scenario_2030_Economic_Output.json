@@ -1,0 +1,64 @@
+{        
+    "parameters" : [
+        {
+            "id": "eco_0",
+            "name": "Operations & Maintenance contract SWB AMB",
+            "units": "EUR / (MWe* a)",
+            "description": "",
+            "value": 3
+        },
+        {
+            "id": "eco_1",
+            "name": "Power Purchase Agreement SWB AMB",
+            "units": "EUR/kWh",
+            "description": "",
+            "value": 0.22
+        },
+        {
+            "id": "eco_2",
+            "name": "Natural Gas Purchase Agreement SWB AMB",
+            "units": "EUR/MWh",
+            "description": "",
+            "value": 206.70
+        },
+        {
+            "id": "eco_3",
+            "name": "ETS price scenario",
+            "units": "EUR/t",
+            "description": "",
+            "value": 99.63,
+            "isVisible": true
+        },
+        {
+            "id": "eco_4",
+            "name": "Profit",
+            "units": "m EUR",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 102,
+            "isVisible": true
+        },
+        {
+            "id": "eco_5",
+            "name": "Revenue",
+            "units": "m EUR",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 40,
+            "isVisible": true
+        },
+        {
+            "id": "eco_6",
+            "name": "Emission",
+            "units": "t",
+            "description": "difference between each goal and simulation result for SWB 2022",
+            "value": 420,
+            "isVisible": true
+        },
+        {
+            "id": "eco_7",
+            "name": "Emissions in Co2 t per year ETS discharge",
+            "units": "t / 1000 MWh",
+            "description": "420 g Co2 per kWh (1000 MWh) * 0,3 * 73,63 (ETS price 2022) = 9277 Euro",
+            "value": 9277
+        }
+    ]
+}

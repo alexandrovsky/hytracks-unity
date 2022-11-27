@@ -16,7 +16,7 @@ namespace HyTracks {
 
 		public int objectId;
 		[Header("Parameters")]
-		public HyTracksSteepParameters parameters;
+		public List<HyTracksSteepParameters> parameters;
 		[Header("Prefabs")]
 		public GameObject parametersPefabUI;
 
@@ -82,15 +82,7 @@ namespace HyTracks {
 		}
 
 
-		public HyTracksParametersList GetInputParameters(STEEPDimension steep)
-		{
-			return parameters.parametersInput[steep];
-		}
-
-		public HyTracksParametersList GetOutputParameters(STEEPDimension steep)
-		{
-			return parameters.parametersOutput[steep];
-		}
+		
 
 		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
 			Panel panel = null;
@@ -211,10 +203,20 @@ namespace HyTracks {
 			}
 		}
 
+		public int CurrentSimulationParametersIndex()
+		{
+			float time = HyTracksSimulationBehaviour.instance.simulationTime;
+			int paramsIdx = (int)(time == 1.0 ? parameters.Count - 1 : time * parameters.Count);
+			return paramsIdx;
+		}
+
+
 		void InitUI() {
 
 			PanelNotificationCenter.OnStartedDraggingTab += PanelNotificationCenter_OnStartedDraggingTab;
 			PanelNotificationCenter.OnStoppedDraggingTab += PanelNotificationCenter_OnStoppedDraggingTab;
+
+			int paramsIdx = CurrentSimulationParametersIndex();
 
 			foreach (STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension))) {
 
@@ -223,12 +225,12 @@ namespace HyTracks {
 				Sprite sprite = null;
 				// Build INPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
-				HyTracksParametersList paramList = GetInputParameters(dim);
+				HyTracksParametersList paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
 				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
 				// Build OUTPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.OUTPUT, dim, out dpc, out uiParent, out sprite);
-				paramList = GetInputParameters(dim);
+				paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.OUTPUT);
 				BuildParametersForDimension(dim, paramList, uiParent, dpc, sprite);
 
 				UpdatePieMenu();
@@ -238,13 +240,15 @@ namespace HyTracks {
 		public new void Init(RectTransform parent, IPointer pointer)
 		{
 			base.Init(parent, pointer);
-			parameters.LoadDataFromJSONFiles();
+			int paramsIdx = CurrentSimulationParametersIndex();
+			parameters[paramsIdx].LoadDataFromJSONFiles();
 			//InitUI();
 		}
 
 		private void Start()
 		{
-			parameters.LoadDataFromJSONFiles();
+			int paramsIdx = CurrentSimulationParametersIndex();
+			parameters[paramsIdx].LoadDataFromJSONFiles();
 			InitUI();
 		}
 
