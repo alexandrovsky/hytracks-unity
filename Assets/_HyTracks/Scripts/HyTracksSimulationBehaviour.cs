@@ -24,5 +24,12 @@ namespace HyTracks
 
             }
         }
+
+
+        public void SetSimulationTime(float t)
+        {
+            simulationTime = t;
+
+		}
     }
 }
