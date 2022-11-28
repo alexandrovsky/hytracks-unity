@@ -219,6 +219,7 @@ namespace HyTracks {
 		{
 			float time = HyTracksSimulationBehaviour.instance.simulationTime;
 			int paramsIdx = (int)(time == 1.0 ? parameters.Count - 1 : time * parameters.Count);
+			Debug.Log(paramsIdx);
 			return paramsIdx;
 		}
 
@@ -270,7 +271,7 @@ namespace HyTracks {
 		private void Update()
 		{
 			int paramsIdx = CurrentSimulationParametersIndex();
-			
+			parameters[paramsIdx].LoadDataFromJSONFiles();
 			foreach (STEEPDimension dim in Enum.GetValues(typeof(STEEPDimension)))
 			{
 				DynamicPanelsCanvas dpc = null;
