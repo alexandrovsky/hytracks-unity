@@ -87,7 +87,7 @@ namespace HyTracks {
 
 		
 
-		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersType parametersType, HyTracksParametersList parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
+		void BuildParametersForDimension(STEEPDimension dimension, HyTracksParametersType parametersType, HyTracksParametersList<HyTracksParametersBase> parametersList, RectTransform uiParent, DynamicPanelsCanvas dpc, Sprite sprite) {
 			Panel panel = null;
 			for (int i = 0; i < parametersList.parameters.Count; i++)
 			{
@@ -240,7 +240,7 @@ namespace HyTracks {
 				Sprite sprite = null;
 				// Build INPUTS UI
 				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
-				HyTracksParametersList paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
+				HyTracksParametersList<HyTracksParametersBase> paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
 				BuildParametersForDimension(dim, HyTracksParametersType.INPUT, paramList, uiParent, dpc, sprite);
 
 				// Build OUTPUTS UI
@@ -277,7 +277,7 @@ namespace HyTracks {
 				RectTransform uiParent = null;
 				Sprite sprite = null;
 				GetComponentsForDimension(HyTracksParametersType.INPUT, dim, out dpc, out uiParent, out sprite);
-				HyTracksParametersList paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
+				HyTracksParametersList<HyTracksParametersBase> paramList = parameters[paramsIdx].GetParameters(dim, HyTracksParametersType.INPUT);
 				foreach (HyTracksParametersBase p in paramList.parameters)
 				{
 					parameterInputUIs[p.id].SetParameterValues(p);

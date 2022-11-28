@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Security.Cryptography;
+using UnityEditor;
 
 namespace HyTracks
 {
@@ -27,29 +27,41 @@ namespace HyTracks
 
 
 		[Header("SOCIAL")]
-        [Space(10)]
-        public HyTracksParametersList parametersSocialInput;
-        public HyTracksParametersList parametersSocialOutput;
-        [Space(10)]
-        [Header("TECHNOLOGY")]
-        public HyTracksParametersList parametersTechnologyInput;
-        public HyTracksParametersList parametersTechnologyOutput;
-        [Space(10)]
-        [Header("ECONOMICS")]
-        public HyTracksParametersList parametersEconomicsInput;
-        public HyTracksParametersList parametersEconomicsOutput;
-        [Space(10)]
-        [Header("ENVIRONMENT")]
-        public HyTracksParametersList parametersEnvironmentInput;
-        public HyTracksParametersList parametersEnvironmentOutput;
-        [Space(10)]
-        [Header("POLITICS")]
-        public HyTracksParametersList parametersPoliticsInput;
-        public HyTracksParametersList parametersPoliticsOutput;
+		[Space(10)]
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersSocialInput;
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersSocialOutput;
+		[Space(10)]
+		[Header("TECHNOLOGY")]
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersTechnologyInput;
+		[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersTechnologyOutput;
+		[Space(10)]
+		[Header("ECONOMICS")]
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersEconomicsInput;
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersEconomicsOutput;
+		[Space(10)]
+		[Header("ENVIRONMENT")]
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersEnvironmentInput;
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersEnvironmentOutput;
+		[Space(10)]
+		[Header("POLITICS")]
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersPoliticsInput;
+		//[HideInInspector]
+		public HyTracksParametersList<HyTracksParametersBase> parametersPoliticsOutput;
 
 
-		public Dictionary<STEEPDimension, HyTracksParametersList> parametersInput { private set; get; }
-		public Dictionary<STEEPDimension, HyTracksParametersList> parametersOutput { private set; get; }
+		private SerializedProperty parametersProps;
+
+		public Dictionary<STEEPDimension, HyTracksParametersList<HyTracksParametersBase>> parametersInput { private set; get; }
+		public Dictionary<STEEPDimension, HyTracksParametersList<HyTracksParametersBase>> parametersOutput { private set; get; }
 
 
 
@@ -58,9 +70,10 @@ namespace HyTracks
 			LoadDataFromJSONFiles();
         }
 
-		public HyTracksParametersList GetParameters(string dimension, HyTracksParametersType type)
+		public HyTracksParametersList<HyTracksParametersBase> GetParameters(string dimension, HyTracksParametersType type)
         {
-            STEEPDimension steep = STEEPDimension.SOCIAL;
+
+			STEEPDimension steep = STEEPDimension.SOCIAL;
 			if (dimension.ToLower().Contains("soc"))
             {
                 steep = STEEPDimension.SOCIAL;
@@ -85,7 +98,7 @@ namespace HyTracks
             return GetParameters(steep, type);
 		}
 
-		public HyTracksParametersList GetParameters(STEEPDimension steep, HyTracksParametersType type)
+		public HyTracksParametersList<HyTracksParametersBase> GetParameters(STEEPDimension steep, HyTracksParametersType type)
 		{
             if(type == HyTracksParametersType.INPUT)
             {
@@ -118,43 +131,45 @@ namespace HyTracks
 		[EditorCools.Button]
 		public override void LoadDataFromJSONFiles()
         {
+            
 			// INPUTS
-			if (parametersSocialInputJSON != null) {
-                parametersSocialInput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialInputJSON.text);
-            }
+			if (parametersSocialInputJSON != null) {                
+				//parametersSocialInput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialInputJSON.text);
+				parametersSocialInput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersSocialInputJSON.text);
+			}
             if(parametersTechnologyInputJSON != null) {
-                parametersTechnologyInput = JsonUtility.FromJson<HyTracksParametersList>(parametersTechnologyInputJSON.text);
+                parametersTechnologyInput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersTechnologyInputJSON.text);
             }
             if(parametersEconomicsInputJSON != null) {
-                parametersEconomicsInput = JsonUtility.FromJson<HyTracksParametersList>(parametersEconomicsInputJSON.text);
+                parametersEconomicsInput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersEconomicsInputJSON.text);
             }
             if(parametersEnvironmentInputJSON != null) {
-                parametersEnvironmentInput = JsonUtility.FromJson<HyTracksParametersList>(parametersEnvironmentInputJSON.text);
+                parametersEnvironmentInput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersEnvironmentInputJSON.text);
             }
             if(parametersPoliticsInputJSON != null) {
-                parametersPoliticsInput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsInputJSON.text);
+                parametersPoliticsInput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersPoliticsInputJSON.text);
             }
 
             // OUTPUTS
             if (parametersSocialOutputJSON != null)
             {
-                parametersSocialOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersSocialOutputJSON.text);
+                parametersSocialOutput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersSocialOutputJSON.text);
             }
             if (parametersTechnologyOutputJSON != null)
             {
-                parametersTechnologyOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersTechnologyOutputJSON.text);
+                parametersTechnologyOutput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersTechnologyOutputJSON.text);
             }
             if (parametersEconomicsOutputJSON != null)
             {
-                parametersEconomicsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEconomicsOutputJSON.text);
+                parametersEconomicsOutput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersEconomicsOutputJSON.text);
             }
             if (parametersEnvironmentOutputJSON != null)
             {
-                parametersEnvironmentOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersEnvironmentOutputJSON.text);
+                parametersEnvironmentOutput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersEnvironmentOutputJSON.text);
             }
             if (parametersPoliticsOutputJSON != null)
             {
-                parametersPoliticsOutput = JsonUtility.FromJson<HyTracksParametersList>(parametersPoliticsOutputJSON.text);
+                parametersPoliticsOutput = HyTracksParametersList<HyTracksParametersBase>.BuildFromJSON(parametersPoliticsOutputJSON.text);
             }
 
 			GenerateDicts();
@@ -162,7 +177,7 @@ namespace HyTracks
 
 		void GenerateDicts()
 		{
-			parametersInput = new Dictionary<STEEPDimension, HyTracksParametersList>() {
+			parametersInput = new Dictionary<STEEPDimension, HyTracksParametersList<HyTracksParametersBase>>() {
 				{STEEPDimension.SOCIAL, parametersSocialInput },
 				{STEEPDimension.TECHNOLOGY, parametersTechnologyInput},
 				{STEEPDimension.ECONOMICS, parametersEconomicsInput},
@@ -170,7 +185,7 @@ namespace HyTracks
 				{STEEPDimension.POLITICS, parametersPoliticsInput},
 			};
 
-			parametersOutput = new Dictionary<STEEPDimension, HyTracksParametersList>() {
+			parametersOutput = new Dictionary<STEEPDimension, HyTracksParametersList<HyTracksParametersBase>>() {
 				{STEEPDimension.SOCIAL, parametersSocialOutput},
 				{STEEPDimension.TECHNOLOGY, parametersTechnologyOutput},
 				{STEEPDimension.ECONOMICS, parametersEconomicsOutput},
@@ -184,7 +199,7 @@ namespace HyTracks
         string dummyJSON;
 
         [EditorCools.Button]
-        void GenerateDummyJSONParamters() {
+        public void GenerateDummyJSONParamters() {
             HyTracksParametersBase p = new HyTracksParametersBase()
             {
                 id = "test_id",
@@ -201,9 +216,9 @@ namespace HyTracks
         }
 
 		[EditorCools.Button]
-		void GenerateDummyJSONParamtersList()
+		public void GenerateDummyJSONParamtersList()
 		{
-            HyTracksParametersList pList = new HyTracksParametersList();
+            HyTracksParametersList<HyTracksParametersBase> pList = new HyTracksParametersList<HyTracksParametersBase>();
             pList.parameters = new List<HyTracksParametersBase>()
             {
                 new HyTracksParametersBase() {

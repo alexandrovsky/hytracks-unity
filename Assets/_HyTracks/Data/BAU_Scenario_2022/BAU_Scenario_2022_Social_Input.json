@@ -8,6 +8,16 @@
             "value": 0,
             "isVisible": false,
             "isEditable": false
+        },
+        {
+            "id": "soc_1",
+            "parameterType": "category",
+            "name": "test",
+            "units": "",
+            "description": "",
+            "values": ["No Action", "Do Something"],
+            "isVisible": false,
+            "isEditable": false
         }
     ]
 }

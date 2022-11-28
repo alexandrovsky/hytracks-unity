@@ -22,23 +22,33 @@ namespace HyTracks
 			{
 				for(int i = 0; i < parameters.Count; i++)
 				{
-					var inputParams = parameters[i].GetParameters(dim, HyTracksParametersType.INPUT).parameters;
-					foreach (var p in inputParams)
+					// INPUTS
+					var parametersList = parameters[i].GetParameters(dim, HyTracksParametersType.INPUT);
+					if (parametersList != null)
 					{
-						if (DynamicPorts.Where(x => x.fieldName == p.id).ToList().Count == 0)
+						var inputParams = parametersList.parameters;
+						foreach (var p in inputParams)
 						{
-							NodePort newPort = AddDynamicInput(typeof(float), fieldName: p.id);
+							if (DynamicPorts.Where(x => x.fieldName == p.id).ToList().Count == 0)
+							{
+								NodePort newPort = AddDynamicInput(typeof(float), fieldName: p.id);
+							}
 						}
 					}
-
-					var outputParams = parameters[i].GetParameters(dim, HyTracksParametersType.OUTPUT).parameters;
-					foreach (var p in outputParams)
+					// OUTPUTS
+					parametersList = parameters[i].GetParameters(dim, HyTracksParametersType.OUTPUT);
+					if(parametersList != null)
 					{
-						if (DynamicPorts.Where(x => x.fieldName == p.id).ToList().Count == 0)
+						var outputParams = parametersList.parameters;
+						foreach (var p in outputParams)
 						{
-							NodePort newPort = AddDynamicOutput(typeof(float), fieldName: p.id);
+							if (DynamicPorts.Where(x => x.fieldName == p.id).ToList().Count == 0)
+							{
+								NodePort newPort = AddDynamicOutput(typeof(float), fieldName: p.id);
+							}
 						}
 					}
+					
 				}				
 			}
 		}
@@ -47,7 +57,7 @@ namespace HyTracks
 		{
 			
 			HyTracksSteepParameters steep = parameters[(int)(time == 1.0 ? parameters.Count - 1 : time * parameters.Count)];
-			HyTracksParametersList parametersList;
+			HyTracksParametersList<HyTracksParametersBase> parametersList;
 			if (port.IsInput)
 			{
 				parametersList = steep.GetParameters(port.fieldName, HyTracksParametersType.INPUT);				
